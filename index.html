@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Shelby Auto Glass</title>
+    <title>Shelby Auto Glass | Tucson Auto Glass Experts</title>
     <meta
       name="description"
-      content="Shelby Auto Glass homepage with mobile auto glass service, service cards, process steps, reviews, and quote request form."
+      content="Shelby Auto Glass provides windshield repair, windshield replacement, side and rear glass, and mobile auto glass service in Tucson, Arizona."
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
@@ -14,19 +14,23 @@
     <a class="skip-link" href="#main">Skip to content</a>
 
     <header class="site-header">
-      <section class="utility-bar" aria-label="Utility information">
+      <div class="utility-bar" aria-label="Utility information">
         <div class="container utility-bar__inner">
-          <p>Fast mobile auto glass service</p>
-          <a href="tel:+10000000000">Call for a quote</a>
+          <a class="utility-bar__phone" href="tel:+15209819770" aria-label="Call Shelby Auto Glass">
+            <span aria-hidden="true">☎</span> (520) 981-9770
+          </a>
+          <p>Tucson, AZ · Mon–Fri | 8am–5pm</p>
+          <a class="utility-bar__button" href="#quote-title">Get a free quote</a>
         </div>
-      </section>
+      </div>
 
-      <section class="main-header" aria-label="Primary navigation">
+      <div class="main-header" aria-label="Primary navigation">
         <div class="container main-header__inner">
           <a class="logo" href="#" aria-label="Shelby Auto Glass home">
-            <!-- Intended asset: /assets logo image. Replace text mark with logo when available. -->
-            <span class="logo__icon" aria-hidden="true">S</span>
-            <span class="logo__text">Shelby Auto Glass</span>
+            <!-- Asset placeholder: replace CSS logo mark with /assets logo image if available. -->
+            <span class="logo__mark" aria-hidden="true">
+              <span>SAG</span>
+            </span>
           </a>
 
           <input class="nav-toggle" type="checkbox" id="nav-toggle" aria-label="Toggle navigation" />
@@ -37,53 +41,89 @@
           </label>
 
           <nav class="nav" aria-label="Main navigation">
-            <a href="#services">Services</a>
-            <a href="#process">Process</a>
-            <a href="#mobile-service">Mobile Service</a>
-            <a href="#reviews">Reviews</a>
+            <a class="nav__link nav__link--active" href="#main">Home</a>
+            <a class="nav__link" href="#services">Services</a>
+            <a class="nav__link" href="#process">About</a>
+            <a class="nav__link" href="#contact">Contact</a>
           </nav>
+
+          <div class="header-actions">
+            <a class="header-actions__phone" href="tel:+15209819770"><span aria-hidden="true">☎</span> (520) 981-9770</a>
+            <a class="button button--small" href="#quote-title">Get a quote</a>
+          </div>
         </div>
-      </section>
+      </div>
     </header>
 
     <main id="main">
       <section class="hero" aria-labelledby="hero-title">
-        <!-- Intended asset: /assets hero windshield or vehicle background image. Add as a CSS background-image on .hero__media when available. -->
+        <!-- Asset placeholder: set --hero-image to /assets/hero-windshield.jpg when the screenshot hero background is available. -->
         <div class="container hero__inner">
           <div class="hero__content">
-            <p class="eyebrow">Auto glass repair and replacement</p>
-            <h1 id="hero-title">Clear glass. Clean installs. Mobile service.</h1>
+            <p class="eyebrow eyebrow--ruled">Tucson, Arizona</p>
+            <h1 id="hero-title">
+              Tucson's Trusted
+              <span>Auto Glass</span>
+              Experts
+            </h1>
             <p class="hero__text">
-              Request a quote for windshield replacement, chip repair, side glass, rear glass, and mobile service.
+              From a small chip to a full windshield replacement — we handle it all with same-day service,
+              certified techs, and a lifetime warranty. We treat every car like it’s our own.
             </p>
+            <div class="hero__buttons">
+              <a class="button" href="#quote-title">Get a free quote <span aria-hidden="true">➜</span></a>
+              <a class="button button--outline" href="tel:+15209819770"><span aria-hidden="true">☎</span> Call now</a>
+            </div>
+            <dl class="stats" aria-label="Shelby Auto Glass statistics">
+              <div>
+                <dt>15+</dt>
+                <dd>Years in Tucson</dd>
+              </div>
+              <div>
+                <dt>20K+</dt>
+                <dd>Windshields fixed</dd>
+              </div>
+              <div>
+                <dt>5.0★</dt>
+                <dd>Google rating</dd>
+              </div>
+            </dl>
           </div>
 
           <aside class="quote-card" aria-labelledby="quote-title">
-            <h2 id="quote-title">Get a quote</h2>
+            <h2 id="quote-title">Start your quote</h2>
+            <p>Takes less than 60 seconds</p>
             <form action="#" method="get" class="quote-form">
               <label>
-                Name
-                <input type="text" name="name" autocomplete="name" />
-              </label>
-              <label>
-                Phone
-                <input type="tel" name="phone" autocomplete="tel" />
-              </label>
-              <label>
-                Vehicle
-                <input type="text" name="vehicle" placeholder="Year / make / model" />
-              </label>
-              <label>
-                Service needed
-                <select name="service">
-                  <option>Windshield replacement</option>
-                  <option>Chip repair</option>
-                  <option>Side glass</option>
-                  <option>Rear glass</option>
-                  <option>Mobile service</option>
+                Vehicle Type
+                <select name="vehicle-type" aria-label="Vehicle type">
+                  <option>Select your vehicle type</option>
+                  <option>Car</option>
+                  <option>Truck</option>
+                  <option>SUV</option>
+                  <option>Van</option>
                 </select>
               </label>
-              <button type="submit">Request quote</button>
+              <label>
+                Service Needed
+                <select name="service" aria-label="Service needed">
+                  <option>What needs fixing?</option>
+                  <option>Windshield Repair</option>
+                  <option>Windshield Replacement</option>
+                  <option>Side &amp; Rear Glass</option>
+                  <option>Mobile Service</option>
+                </select>
+              </label>
+              <label>
+                Zip Code
+                <input type="text" name="zip" inputmode="numeric" autocomplete="postal-code" placeholder="e.g. 85712" />
+              </label>
+              <label>
+                VIN
+                <input type="text" name="vin" placeholder="17-character VIN" />
+              </label>
+              <button type="submit">Get my free quote <span aria-hidden="true">➜</span></button>
+              <small>No obligation · Insurance claims welcome</small>
             </form>
           </aside>
         </div>
@@ -91,33 +131,45 @@
 
       <section class="services section" id="services" aria-labelledby="services-title">
         <div class="container">
-          <div class="section-heading">
-            <p class="eyebrow">Services</p>
-            <h2 id="services-title">Auto glass services</h2>
+          <div class="section-heading section-heading--center">
+            <p class="eyebrow eyebrow--centered">What we do</p>
+            <h2 id="services-title">Our services</h2>
           </div>
           <div class="service-grid">
-            <article class="service-card">
-              <!-- Intended asset: /assets service card image for windshield replacement. -->
-              <div class="service-card__image" aria-hidden="true"></div>
-              <div class="service-card__body">
-                <h3>Windshield replacement</h3>
-                <p>Professional windshield installation for a clear, safe view.</p>
+            <article class="service-card service-card--repair">
+              <!-- Asset placeholder: replace card background with /assets/windshield-repair.jpg. -->
+              <div class="service-card__content">
+                <span class="service-card__icon" aria-hidden="true">◉</span>
+                <h3>Windshield Repair</h3>
+                <p>Fix chips and cracks before they spread. Fast, affordable, and often covered by insurance.</p>
+                <a href="#quote-title">Learn more <span aria-hidden="true">›</span></a>
               </div>
             </article>
-            <article class="service-card">
-              <!-- Intended asset: /assets service card image for chip repair. -->
-              <div class="service-card__image" aria-hidden="true"></div>
-              <div class="service-card__body">
-                <h3>Chip repair</h3>
-                <p>Repair small chips before they spread across the glass.</p>
+            <article class="service-card service-card--replacement">
+              <!-- Asset placeholder: replace card background with /assets/windshield-replacement.jpg. -->
+              <div class="service-card__content">
+                <span class="service-card__icon" aria-hidden="true">◉</span>
+                <h3>Windshield Replacement</h3>
+                <p>Full OEM-quality windshield replacement with a lifetime warranty on every install.</p>
+                <a href="#quote-title">Learn more <span aria-hidden="true">›</span></a>
               </div>
             </article>
-            <article class="service-card">
-              <!-- Intended asset: /assets service card image for side and rear glass. -->
-              <div class="service-card__image" aria-hidden="true"></div>
-              <div class="service-card__body">
-                <h3>Side and rear glass</h3>
-                <p>Replacement for door glass, quarter glass, and back glass.</p>
+            <article class="service-card service-card--side">
+              <!-- Asset placeholder: replace card background with /assets/side-rear-glass.jpg. -->
+              <div class="service-card__content">
+                <span class="service-card__icon" aria-hidden="true">◉</span>
+                <h3>Side &amp; Rear Glass</h3>
+                <p>Broken door glass, quarter windows, or rear windshields — we replace them all.</p>
+                <a href="#quote-title">Learn more <span aria-hidden="true">›</span></a>
+              </div>
+            </article>
+            <article class="service-card service-card--mobile">
+              <!-- Asset placeholder: replace card background with /assets/mobile-service.jpg. -->
+              <div class="service-card__content">
+                <span class="service-card__icon" aria-hidden="true">◉</span>
+                <h3>Mobile Service</h3>
+                <p>We come to your home, office, or anywhere in Tucson. No shop visit needed.</p>
+                <a href="#quote-title">Learn more <span aria-hidden="true">›</span></a>
               </div>
             </article>
           </div>
@@ -127,16 +179,32 @@
       <section class="trust-strip" aria-label="Trust and service features">
         <div class="container trust-strip__inner">
           <article>
-            <h2>Mobile</h2>
-            <p>Service where your vehicle is parked.</p>
+            <span aria-hidden="true">⬡</span>
+            <div>
+              <h2>Insurance Accepted</h2>
+              <p>We work directly with all major carriers</p>
+            </div>
           </article>
           <article>
-            <h2>Precise</h2>
-            <p>Clean installs and careful glass handling.</p>
+            <span aria-hidden="true">♙</span>
+            <div>
+              <h2>Certified Technicians</h2>
+              <p>Auto-glass trained crews on every install</p>
+            </div>
           </article>
           <article>
-            <h2>Ready</h2>
-            <p>Quote support for common auto glass needs.</p>
+            <span aria-hidden="true">✓</span>
+            <div>
+              <h2>Lifetime Warranty</h2>
+              <p>On all windshield replacements</p>
+            </div>
+          </article>
+          <article>
+            <span aria-hidden="true">↯</span>
+            <div>
+              <h2>Same-Day Service</h2>
+              <p>Availability across Tucson</p>
+            </div>
           </article>
         </div>
       </section>
@@ -144,41 +212,42 @@
       <section class="process section" id="process" aria-labelledby="process-title">
         <div class="container">
           <div class="section-heading section-heading--center">
-            <p class="eyebrow">Process</p>
-            <h2 id="process-title">Simple from quote to install</h2>
+            <p class="eyebrow eyebrow--centered">Simple process</p>
+            <h2 id="process-title">How it works</h2>
           </div>
           <div class="process-grid">
             <article class="process-step">
-              <span>01</span>
-              <h3>Request</h3>
-              <p>Share your vehicle and glass service details.</p>
+              <div class="process-step__icon" aria-hidden="true">☎</div>
+              <h3>Get A Quote</h3>
+              <p>Call us or fill out our quick online form. We’ll give you an honest price — no surprises.</p>
             </article>
             <article class="process-step">
-              <span>02</span>
-              <h3>Schedule</h3>
-              <p>Choose a service time and location that works.</p>
+              <div class="process-step__icon" aria-hidden="true">◴</div>
+              <h3>Schedule Service</h3>
+              <p>Pick a time that works for you. We offer same-day and flexible appointments across Tucson.</p>
             </article>
             <article class="process-step">
-              <span>03</span>
-              <h3>Install</h3>
-              <p>Get professional service and a clean finish.</p>
+              <div class="process-step__icon" aria-hidden="true">☞</div>
+              <h3>Back On The Road</h3>
+              <p>Our certified techs get the job done right, with repairs that last and are warrantied.</p>
             </article>
           </div>
         </div>
       </section>
 
       <section class="mobile-service" id="mobile-service" aria-labelledby="mobile-service-title">
-        <div class="container mobile-service__inner">
-          <div class="mobile-service__image" aria-hidden="true">
-            <!-- Intended asset: /assets mobile service van image. -->
-          </div>
-          <div class="mobile-service__content">
-            <p class="eyebrow">Mobile service</p>
-            <h2 id="mobile-service-title">We come to you</h2>
-            <p>
-              Mobile auto glass service helps keep your day moving while your vehicle gets the glass care it needs.
-            </p>
-            <a class="button" href="#quote-title">Start a quote</a>
+        <!-- Asset placeholder: set .mobile-service__image background to /assets/mobile-service-van.jpg when available. -->
+        <div class="mobile-service__image" aria-hidden="true"></div>
+        <div class="mobile-service__content">
+          <p class="eyebrow eyebrow--ruled">Mobile service</p>
+          <h2 id="mobile-service-title">We come <span>to you</span></h2>
+          <p>
+            Skip the shop. Our mobile technicians come to your home, workplace, or anywhere in the Tucson metro area.
+            Same certified service, same lifetime warranty — zero hassle.
+          </p>
+          <div class="mobile-service__actions">
+            <a class="button" href="#quote-title">Book mobile service <span aria-hidden="true">➜</span></a>
+            <small><span aria-hidden="true">◎</span> All Tucson metro areas</small>
           </div>
         </div>
       </section>
@@ -186,21 +255,43 @@
       <section class="reviews section" id="reviews" aria-labelledby="reviews-title">
         <div class="container">
           <div class="section-heading section-heading--center">
-            <p class="eyebrow">Reviews</p>
-            <h2 id="reviews-title">Customer reviews</h2>
+            <p class="eyebrow">Customer reviews</p>
+            <h2 id="reviews-title">What Tucson says</h2>
+            <p class="section-subtitle">5.0 stars · 300+ Google reviews</p>
           </div>
           <div class="review-grid">
             <figure class="review-card">
-              <blockquote>“Fast, clean, and easy to schedule.”</blockquote>
-              <figcaption>— Local customer</figcaption>
+              <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+              <blockquote>
+                “Shelby Auto Glass came to my office and replaced my windshield in under an hour. The tech was super
+                professional and the price was way better than the dealership. Highly recommend.”
+              </blockquote>
+              <figcaption>
+                <strong>Maria G.</strong>
+                <span>Tucson, AZ</span>
+              </figcaption>
             </figure>
             <figure class="review-card">
-              <blockquote>“The mobile appointment made the repair simple.”</blockquote>
-              <figcaption>— Local customer</figcaption>
+              <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+              <blockquote>
+                “Had a rock chip that was spreading fast. Called in the morning, they fixed it same day. Works directly
+                with my insurance and I paid nothing out of pocket. These guys are the real deal.”
+              </blockquote>
+              <figcaption>
+                <strong>James T.</strong>
+                <span>Marana, AZ</span>
+              </figcaption>
             </figure>
             <figure class="review-card">
-              <blockquote>“Clear communication and a professional install.”</blockquote>
-              <figcaption>— Local customer</figcaption>
+              <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+              <blockquote>
+                “Family-owned business that actually cares. They explained everything, didn’t try to upsell me, and the
+                install looks perfect. I’ll never go anywhere else for auto glass.”
+              </blockquote>
+              <figcaption>
+                <strong>Sandra R.</strong>
+                <span>Oro Valley, AZ</span>
+              </figcaption>
             </figure>
           </div>
         </div>
@@ -209,26 +300,67 @@
       <section class="final-cta" aria-labelledby="final-cta-title">
         <div class="container final-cta__inner">
           <div>
-            <p class="eyebrow">Ready for clear glass?</p>
-            <h2 id="final-cta-title">Request your auto glass quote today.</h2>
+            <p class="eyebrow eyebrow--ruled">Ready to go?</p>
+            <h2 id="final-cta-title">Ready to get your glass <span>fixed?</span></h2>
+            <p>
+              Don’t wait for that crack to spread. Get a free quote in under a minute — we’ll handle the insurance,
+              the scheduling, and the hard part.
+            </p>
           </div>
-          <a class="button button--dark" href="#quote-title">Get a quote</a>
+          <div class="final-cta__actions">
+            <a class="button" href="#quote-title">Get a free quote <span aria-hidden="true">➜</span></a>
+            <a class="button button--outline" href="tel:+15209819770"><span aria-hidden="true">☎</span> (520) 981-9770</a>
+          </div>
         </div>
       </section>
     </main>
 
-    <footer class="footer">
+    <footer class="footer" id="contact">
       <div class="container footer__inner">
-        <a class="logo logo--footer" href="#" aria-label="Shelby Auto Glass home">
-          <span class="logo__icon" aria-hidden="true">S</span>
-          <span class="logo__text">Shelby Auto Glass</span>
-        </a>
-        <p>Mobile auto glass repair and replacement.</p>
-        <nav aria-label="Footer navigation">
-          <a href="#services">Services</a>
-          <a href="#process">Process</a>
-          <a href="#reviews">Reviews</a>
+        <section class="footer__brand" aria-label="Shelby Auto Glass">
+          <a class="logo logo--footer" href="#" aria-label="Shelby Auto Glass home">
+            <span class="logo__mark" aria-hidden="true"><span>SAG</span></span>
+          </a>
+          <p>
+            Tucson’s premier auto glass shop. Family-owned, locally trusted, and committed to getting you back on the
+            road safely.
+          </p>
+          <div class="social-links" aria-label="Social links">
+            <a href="#" aria-label="Facebook">f</a>
+            <a href="#" aria-label="Instagram">◎</a>
+            <a href="#" aria-label="Google">G</a>
+          </div>
+        </section>
+
+        <nav class="footer__column" aria-label="Services">
+          <h2>Services</h2>
+          <a href="#services">Windshield Repair</a>
+          <a href="#services">Windshield Replacement</a>
+          <a href="#services">Side &amp; Rear Glass</a>
+          <a href="#mobile-service">Mobile Service</a>
+          <a href="#services">ADAS Calibration</a>
+          <a href="#quote-title">Insurance Claims</a>
         </nav>
+
+        <nav class="footer__column" aria-label="Company">
+          <h2>Company</h2>
+          <a href="#process">About Us</a>
+          <a href="#quote-title">Get a Quote</a>
+          <a href="#contact">Contact</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </nav>
+
+        <section class="footer__column footer__contact" aria-label="Contact information">
+          <h2>Contact</h2>
+          <p><span aria-hidden="true">◎</span> 1887 W. Grant Rd., Suite 102<br />Tucson, AZ 85745</p>
+          <p><span aria-hidden="true">☎</span> <a href="tel:+15209819770">(520) 981-9770</a></p>
+          <p><span aria-hidden="true">◷</span> Mon–Fri: 8am–5pm<br />Saturday: Closed<br />Sunday: Closed</p>
+        </section>
+      </div>
+      <div class="container footer__bottom">
+        <p>© 2026 Shelby Auto Glass. All rights reserved. Tucson, AZ</p>
+        <p><a href="#">Privacy</a> · <a href="#">Terms</a> · <span>Powered by Media Group</span></p>
       </div>
     </footer>
   </body>
