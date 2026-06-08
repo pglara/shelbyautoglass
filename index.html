@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Shelby Auto Glass</title>
+    <meta
+      name="description"
+      content="Shelby Auto Glass homepage with mobile auto glass service, service cards, process steps, reviews, and quote request form."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <section class="utility-bar" aria-label="Utility information">
+        <div class="container utility-bar__inner">
+          <p>Fast mobile auto glass service</p>
+          <a href="tel:+10000000000">Call for a quote</a>
+        </div>
+      </section>
+
+      <section class="main-header" aria-label="Primary navigation">
+        <div class="container main-header__inner">
+          <a class="logo" href="#" aria-label="Shelby Auto Glass home">
+            <!-- Intended asset: /assets logo image. Replace text mark with logo when available. -->
+            <span class="logo__icon" aria-hidden="true">S</span>
+            <span class="logo__text">Shelby Auto Glass</span>
+          </a>
+
+          <input class="nav-toggle" type="checkbox" id="nav-toggle" aria-label="Toggle navigation" />
+          <label class="nav-toggle-label" for="nav-toggle" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+          </label>
+
+          <nav class="nav" aria-label="Main navigation">
+            <a href="#services">Services</a>
+            <a href="#process">Process</a>
+            <a href="#mobile-service">Mobile Service</a>
+            <a href="#reviews">Reviews</a>
+          </nav>
+        </div>
+      </section>
+    </header>
+
+    <main id="main">
+      <section class="hero" aria-labelledby="hero-title">
+        <!-- Intended asset: /assets hero windshield or vehicle background image. Add as a CSS background-image on .hero__media when available. -->
+        <div class="container hero__inner">
+          <div class="hero__content">
+            <p class="eyebrow">Auto glass repair and replacement</p>
+            <h1 id="hero-title">Clear glass. Clean installs. Mobile service.</h1>
+            <p class="hero__text">
+              Request a quote for windshield replacement, chip repair, side glass, rear glass, and mobile service.
+            </p>
+          </div>
+
+          <aside class="quote-card" aria-labelledby="quote-title">
+            <h2 id="quote-title">Get a quote</h2>
+            <form action="#" method="get" class="quote-form">
+              <label>
+                Name
+                <input type="text" name="name" autocomplete="name" />
+              </label>
+              <label>
+                Phone
+                <input type="tel" name="phone" autocomplete="tel" />
+              </label>
+              <label>
+                Vehicle
+                <input type="text" name="vehicle" placeholder="Year / make / model" />
+              </label>
+              <label>
+                Service needed
+                <select name="service">
+                  <option>Windshield replacement</option>
+                  <option>Chip repair</option>
+                  <option>Side glass</option>
+                  <option>Rear glass</option>
+                  <option>Mobile service</option>
+                </select>
+              </label>
+              <button type="submit">Request quote</button>
+            </form>
+          </aside>
+        </div>
+      </section>
+
+      <section class="services section" id="services" aria-labelledby="services-title">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Services</p>
+            <h2 id="services-title">Auto glass services</h2>
+          </div>
+          <div class="service-grid">
+            <article class="service-card">
+              <!-- Intended asset: /assets service card image for windshield replacement. -->
+              <div class="service-card__image" aria-hidden="true"></div>
+              <div class="service-card__body">
+                <h3>Windshield replacement</h3>
+                <p>Professional windshield installation for a clear, safe view.</p>
+              </div>
+            </article>
+            <article class="service-card">
+              <!-- Intended asset: /assets service card image for chip repair. -->
+              <div class="service-card__image" aria-hidden="true"></div>
+              <div class="service-card__body">
+                <h3>Chip repair</h3>
+                <p>Repair small chips before they spread across the glass.</p>
+              </div>
+            </article>
+            <article class="service-card">
+              <!-- Intended asset: /assets service card image for side and rear glass. -->
+              <div class="service-card__image" aria-hidden="true"></div>
+              <div class="service-card__body">
+                <h3>Side and rear glass</h3>
+                <p>Replacement for door glass, quarter glass, and back glass.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="trust-strip" aria-label="Trust and service features">
+        <div class="container trust-strip__inner">
+          <article>
+            <h2>Mobile</h2>
+            <p>Service where your vehicle is parked.</p>
+          </article>
+          <article>
+            <h2>Precise</h2>
+            <p>Clean installs and careful glass handling.</p>
+          </article>
+          <article>
+            <h2>Ready</h2>
+            <p>Quote support for common auto glass needs.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="process section" id="process" aria-labelledby="process-title">
+        <div class="container">
+          <div class="section-heading section-heading--center">
+            <p class="eyebrow">Process</p>
+            <h2 id="process-title">Simple from quote to install</h2>
+          </div>
+          <div class="process-grid">
+            <article class="process-step">
+              <span>01</span>
+              <h3>Request</h3>
+              <p>Share your vehicle and glass service details.</p>
+            </article>
+            <article class="process-step">
+              <span>02</span>
+              <h3>Schedule</h3>
+              <p>Choose a service time and location that works.</p>
+            </article>
+            <article class="process-step">
+              <span>03</span>
+              <h3>Install</h3>
+              <p>Get professional service and a clean finish.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="mobile-service" id="mobile-service" aria-labelledby="mobile-service-title">
+        <div class="container mobile-service__inner">
+          <div class="mobile-service__image" aria-hidden="true">
+            <!-- Intended asset: /assets mobile service van image. -->
+          </div>
+          <div class="mobile-service__content">
+            <p class="eyebrow">Mobile service</p>
+            <h2 id="mobile-service-title">We come to you</h2>
+            <p>
+              Mobile auto glass service helps keep your day moving while your vehicle gets the glass care it needs.
+            </p>
+            <a class="button" href="#quote-title">Start a quote</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="reviews section" id="reviews" aria-labelledby="reviews-title">
+        <div class="container">
+          <div class="section-heading section-heading--center">
+            <p class="eyebrow">Reviews</p>
+            <h2 id="reviews-title">Customer reviews</h2>
+          </div>
+          <div class="review-grid">
+            <figure class="review-card">
+              <blockquote>“Fast, clean, and easy to schedule.”</blockquote>
+              <figcaption>— Local customer</figcaption>
+            </figure>
+            <figure class="review-card">
+              <blockquote>“The mobile appointment made the repair simple.”</blockquote>
+              <figcaption>— Local customer</figcaption>
+            </figure>
+            <figure class="review-card">
+              <blockquote>“Clear communication and a professional install.”</blockquote>
+              <figcaption>— Local customer</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="final-cta" aria-labelledby="final-cta-title">
+        <div class="container final-cta__inner">
+          <div>
+            <p class="eyebrow">Ready for clear glass?</p>
+            <h2 id="final-cta-title">Request your auto glass quote today.</h2>
+          </div>
+          <a class="button button--dark" href="#quote-title">Get a quote</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <a class="logo logo--footer" href="#" aria-label="Shelby Auto Glass home">
+          <span class="logo__icon" aria-hidden="true">S</span>
+          <span class="logo__text">Shelby Auto Glass</span>
+        </a>
+        <p>Mobile auto glass repair and replacement.</p>
+        <nav aria-label="Footer navigation">
+          <a href="#services">Services</a>
+          <a href="#process">Process</a>
+          <a href="#reviews">Reviews</a>
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>
