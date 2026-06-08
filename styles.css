@@ -17,9 +17,7 @@
   --font-heading: "Arial Narrow", "Bebas Neue", "Oswald", "Anton", Impact, sans-serif;
   --font-body: Inter, Montserrat, "Segoe UI", Arial, sans-serif;
   --container: 1200px;
-  --hero-image: linear-gradient(130deg, rgba(18, 23, 30, 0.5), rgba(6, 8, 11, 0.8)),
-    radial-gradient(circle at 72% 18%, rgba(88, 126, 163, 0.42), transparent 30%),
-    linear-gradient(105deg, #090c11 0%, #111821 52%, #24211c 100%);
+  --hero-image: url("assets/hero/windshield-replacement.jpeg");
 }
 
 * {
@@ -123,7 +121,7 @@ select {
 .main-header__inner {
   align-items: center;
   display: grid;
-  grid-template-columns: 160px 1fr 260px;
+  grid-template-columns: 190px 1fr 260px;
   min-height: 78px;
 }
 
@@ -133,30 +131,12 @@ select {
   width: max-content;
 }
 
-.logo__mark {
-  align-items: center;
-  background: radial-gradient(circle at 50% 42%, #ffffff 0 27%, #23394d 28% 44%, #efefef 45% 56%, #111 57% 100%);
-  border: 2px solid #e8e8e8;
-  border-radius: 50%;
-  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.35);
-  color: #111;
-  display: inline-flex;
-  font-family: var(--font-heading);
-  font-size: 10px;
-  font-weight: 900;
-  height: 52px;
-  justify-content: center;
-  letter-spacing: 0.02em;
-  line-height: 1;
-  text-align: center;
-  width: 52px;
-}
-
-.logo__mark span {
-  background: #fff;
-  border-radius: 2px;
-  padding: 2px 3px 1px;
-  transform: translateY(10px);
+.logo__image {
+  display: block;
+  height: auto;
+  max-height: 66px;
+  object-fit: contain;
+  width: 150px;
 }
 
 .nav {
@@ -234,7 +214,7 @@ select {
 .hero {
   background: linear-gradient(90deg, rgba(5, 7, 10, 0.96) 0%, rgba(7, 9, 13, 0.89) 38%, rgba(7, 9, 13, 0.72) 100%),
     var(--hero-image);
-  background-position: center;
+  background-position: center right;
   background-size: cover;
   min-height: 729px;
   position: relative;
@@ -464,9 +444,8 @@ h1 span,
 
 .service-card {
   background-color: #141414;
-  background-image: linear-gradient(180deg, rgba(5, 6, 9, 0.13) 0%, rgba(7, 8, 12, 0.76) 54%, rgba(7, 8, 12, 0.98) 100%),
-    linear-gradient(135deg, rgba(255, 114, 20, 0.28), transparent 38%),
-    linear-gradient(120deg, #6d523c 0%, #16181d 48%, #384b61 100%);
+  background-image: linear-gradient(180deg, rgba(5, 6, 9, 0.05) 0%, rgba(7, 8, 12, 0.58) 54%, rgba(7, 8, 12, 0.98) 100%),
+    url("assets/services/IMG_9644.jpeg");
   background-position: center;
   background-size: cover;
   border-radius: 5px;
@@ -477,21 +456,21 @@ h1 span,
 }
 
 .service-card--replacement {
-  background-image: linear-gradient(180deg, rgba(5, 6, 9, 0.08) 0%, rgba(7, 8, 12, 0.76) 58%, rgba(7, 8, 12, 0.98) 100%),
-    radial-gradient(circle at 42% 32%, rgba(255, 114, 20, 0.45), transparent 16%),
-    linear-gradient(120deg, #0d1217 0%, #7a5032 42%, #111820 100%);
+  background-image: linear-gradient(180deg, rgba(5, 6, 9, 0.05) 0%, rgba(7, 8, 12, 0.58) 54%, rgba(7, 8, 12, 0.98) 100%),
+    url("assets/services/windshield-replacement.jpeg");
+  background-position: center;
 }
 
 .service-card--side {
-  background-image: linear-gradient(180deg, rgba(5, 6, 9, 0.08) 0%, rgba(7, 8, 12, 0.76) 58%, rgba(7, 8, 12, 0.98) 100%),
-    radial-gradient(circle at 64% 18%, rgba(102, 172, 208, 0.38), transparent 20%),
-    linear-gradient(120deg, #1a1813 0%, #3d2f23 40%, #081016 100%);
+  background-image: linear-gradient(180deg, rgba(5, 6, 9, 0.05) 0%, rgba(7, 8, 12, 0.58) 54%, rgba(7, 8, 12, 0.98) 100%),
+    url("assets/services/IMG_9645.jpeg");
+  background-position: center;
 }
 
 .service-card--mobile {
-  background-image: linear-gradient(180deg, rgba(5, 6, 9, 0.08) 0%, rgba(7, 8, 12, 0.76) 58%, rgba(7, 8, 12, 0.98) 100%),
-    radial-gradient(circle at 70% 20%, rgba(103, 176, 232, 0.4), transparent 24%),
-    linear-gradient(120deg, #111722 0%, #294e77 45%, #d4a15f 100%);
+  background-image: linear-gradient(180deg, rgba(5, 6, 9, 0.05) 0%, rgba(7, 8, 12, 0.58) 54%, rgba(7, 8, 12, 0.98) 100%),
+    url("assets/services/work-truck2.jpeg");
+  background-position: center;
 }
 
 .service-card__content {
@@ -652,10 +631,8 @@ h1 span,
 }
 
 .mobile-service__image {
-  background: linear-gradient(90deg, rgba(4, 6, 10, 0.34), rgba(6, 8, 13, 0.92)),
-    radial-gradient(circle at 28% 45%, rgba(0, 71, 157, 0.8), transparent 27%),
-    radial-gradient(circle at 23% 72%, rgba(255, 114, 20, 0.55), transparent 9%),
-    linear-gradient(145deg, #4491df 0%, #17243b 34%, #77705f 68%, #15161a 100%);
+  background: linear-gradient(90deg, rgba(4, 6, 10, 0.08), rgba(6, 8, 13, 0.74)),
+    url("assets/mobile/work-truck.jpeg");
   background-position: center;
   background-size: cover;
 }
@@ -782,14 +759,8 @@ h1 span,
   padding-bottom: 55px;
 }
 
-.footer__brand .logo__mark {
-  height: 36px;
-  width: 36px;
-}
-
-.footer__brand .logo__mark span {
-  font-size: 7px;
-  transform: translateY(7px);
+.footer__brand .logo__image {
+  width: 112px;
 }
 
 .footer__brand p {

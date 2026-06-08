@@ -1,6 +1,6 @@
 # Shelby Auto Glass assets
 
-Upload homepage imagery and logo files into the folders below. The current static rebuild includes gradient placeholders, so the page will keep its layout even before images are added.
+Upload homepage imagery and logo files into the folders below. The static rebuild now uses the uploaded brand and service photos while keeping gradient overlays for legibility.
 
 ## Folders
 
@@ -10,14 +10,14 @@ Upload homepage imagery and logo files into the folders below. The current stati
 - `mobile/` — van or mobile-service image for the split mobile service section.
 - `reviews/` — optional customer/review-related imagery if needed later.
 
-## Suggested filenames
+## Active homepage assets
 
-These names match the placeholder comments in `index.html` and make future CSS updates straightforward:
+These files are currently referenced by `index.html` and `styles.css`:
 
-- `logo/shelby-auto-glass-logo.png`
-- `hero/hero-windshield.jpg`
-- `services/windshield-repair.jpg`
-- `services/windshield-replacement.jpg`
-- `services/side-rear-glass.jpg`
-- `services/mobile-service.jpg`
-- `mobile/mobile-service-van.jpg`
+- `logo/shelby-logo-dark.webp` — header and footer logo.
+- `hero/windshield-replacement.jpeg` — hero background.
+- `services/IMG_9644.jpeg` — windshield repair service card.
+- `services/windshield-replacement.jpeg` — windshield replacement service card.
+- `services/IMG_9645.jpeg` — side and rear glass service card.
+- `services/work-truck2.jpeg` — mobile service card.
+- `mobile/work-truck.jpeg` — mobile-service split section.
