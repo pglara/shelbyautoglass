@@ -14,9 +14,12 @@
   --text: #f4f1eb;
   --muted: #b9b3a9;
   --dim: #7f7a73;
-  --font-heading: "Arial Narrow", "Bebas Neue", "Oswald", "Anton", Impact, sans-serif;
+  --font-heading: "Bebas Neue", "Arial Narrow", "Oswald", "Anton", Impact, sans-serif;
   --font-body: Inter, Montserrat, "Segoe UI", Arial, sans-serif;
   --container: 1200px;
+  --section-y: 96px;
+  --section-heading-gap: 48px;
+  --heading-track: 0.045em;
   --hero-image: url("assets/hero/windshield-replacement.jpeg");
 }
 
@@ -32,8 +35,8 @@ body {
   background: var(--black);
   color: var(--text);
   font-family: var(--font-body);
-  font-size: 14px;
-  line-height: 1.55;
+  font-size: 15px;
+  line-height: 1.6;
   margin: 0;
 }
 
@@ -277,16 +280,15 @@ h1,
 h2,
 h3 {
   font-family: var(--font-heading);
-  font-stretch: condensed;
-  font-weight: 900;
-  letter-spacing: 0.015em;
-  line-height: 0.92;
+  font-weight: 400;
+  letter-spacing: var(--heading-track);
+  line-height: 0.88;
   margin: 0;
   text-transform: uppercase;
 }
 
 h1 {
-  font-size: clamp(64px, 5.7vw, 76px);
+  font-size: clamp(72px, 6.9vw, 96px);
   max-width: 650px;
 }
 
@@ -307,22 +309,22 @@ h1 {
 
 .hero__text {
   color: #d6d1c7;
-  font-size: 16px;
-  line-height: 1.75;
-  margin: 29px 0 0;
-  max-width: 590px;
+  font-size: 17px;
+  line-height: 1.68;
+  margin: 25px 0 0;
+  max-width: 600px;
 }
 
 .hero__buttons {
   display: flex;
-  gap: 16px;
-  margin-top: 31px;
+  gap: 14px;
+  margin-top: 30px;
 }
 
 .stats {
   display: flex;
-  gap: 48px;
-  margin: 66px 0 0;
+  gap: 42px;
+  margin: 58px 0 0;
 }
 
 .stats div {
@@ -332,8 +334,9 @@ h1 {
 .stats dt {
   color: var(--orange);
   font-family: var(--font-heading);
-  font-size: 25px;
-  font-weight: 900;
+  font-size: 34px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
   line-height: 1;
 }
 
@@ -415,7 +418,7 @@ h1 {
 }
 
 .section {
-  padding: 88px 0 94px;
+  padding: var(--section-y) 0;
 }
 
 .services,
@@ -425,7 +428,7 @@ h1 {
 }
 
 .section-heading {
-  margin-bottom: 44px;
+  margin-bottom: var(--section-heading-gap);
 }
 
 .section-heading--center {
@@ -435,18 +438,18 @@ h1 {
 .section-heading h2,
 .mobile-service h2,
 .final-cta h2 {
-  font-size: clamp(45px, 5vw, 58px);
+  font-size: clamp(56px, 5.8vw, 72px);
 }
 
 .section-subtitle {
   color: var(--muted);
-  font-size: 13px;
-  margin: 13px 0 0;
+  font-size: 14px;
+  margin: 12px 0 0;
 }
 
 .service-grid {
   display: grid;
-  gap: 17px;
+  gap: 20px;
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
@@ -458,7 +461,7 @@ h1 {
   background-size: cover;
   border-radius: 5px;
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
-  min-height: 308px;
+  min-height: 324px;
   overflow: hidden;
   position: relative;
 }
@@ -484,7 +487,7 @@ h1 {
 .service-card__content {
   bottom: 0;
   left: 0;
-  padding: 0 23px 27px;
+  padding: 0 24px 28px;
   position: absolute;
   right: 0;
 }
@@ -497,23 +500,23 @@ h1 {
 }
 
 .service-card h3 {
-  font-size: 20px;
-  margin-bottom: 11px;
+  font-size: 28px;
+  margin-bottom: 9px;
 }
 
 .service-card p {
   color: #c9c4bd;
   font-size: 13px;
-  line-height: 1.62;
-  margin: 0 0 17px;
+  line-height: 1.58;
+  margin: 0 0 18px;
 }
 
 .service-card a {
   color: var(--orange);
   font-family: var(--font-heading);
-  font-size: 13px;
-  font-weight: 900;
-  letter-spacing: 0.09em;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
@@ -521,7 +524,7 @@ h1 {
   background: #0c0e13;
   border-bottom: 1px solid #3f3a34;
   border-top: 1px solid #24242a;
-  padding: 23px 0;
+  padding: 26px 0;
 }
 
 .trust-strip__inner {
@@ -543,7 +546,7 @@ h1 {
 }
 
 .trust-strip h2 {
-  font-size: 14px;
+  font-size: 20px;
 }
 
 .trust-strip p {
@@ -553,15 +556,15 @@ h1 {
 }
 
 .process {
-  padding-bottom: 103px;
-  padding-top: 92px;
+  padding-bottom: 104px;
+  padding-top: 96px;
 }
 
 .process-grid {
   display: grid;
   gap: 0;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  margin: 46px auto 0;
+  margin: 50px auto 0;
   max-width: 840px;
   position: relative;
 }
@@ -620,14 +623,14 @@ h1 {
 }
 
 .process-step h3 {
-  font-size: 18px;
-  margin-bottom: 13px;
+  font-size: 26px;
+  margin-bottom: 10px;
 }
 
 .process-step p {
   color: var(--muted);
-  font-size: 13px;
-  line-height: 1.62;
+  font-size: 14px;
+  line-height: 1.6;
   margin: 0;
 }
 
@@ -657,9 +660,9 @@ h1 {
 
 .mobile-service__content > p:not(.eyebrow) {
   color: #c9c4bd;
-  font-size: 14px;
-  line-height: 1.72;
-  margin: 26px 0 29px;
+  font-size: 15px;
+  line-height: 1.68;
+  margin: 24px 0 30px;
 }
 
 .mobile-service__actions {
@@ -674,13 +677,13 @@ h1 {
 }
 
 .reviews {
-  padding-bottom: 96px;
-  padding-top: 88px;
+  padding-bottom: 98px;
+  padding-top: 96px;
 }
 
 .review-grid {
   display: grid;
-  gap: 24px;
+  gap: 22px;
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
@@ -704,9 +707,9 @@ h1 {
 
 .review-card blockquote {
   color: #eee7df;
-  font-size: 13px;
+  font-size: 14px;
   font-style: italic;
-  line-height: 1.65;
+  line-height: 1.62;
   margin: 0 0 22px;
 }
 
@@ -730,7 +733,7 @@ h1 {
   background: #090b11;
   border-bottom: 1px solid var(--line);
   min-height: 430px;
-  padding: 88px 0 86px;
+  padding: 96px 0 92px;
 }
 
 .final-cta__inner {
@@ -746,9 +749,9 @@ h1 {
 
 .final-cta p:not(.eyebrow) {
   color: var(--muted);
-  font-size: 14px;
-  line-height: 1.7;
-  margin: 25px 0 0;
+  font-size: 15px;
+  line-height: 1.68;
+  margin: 24px 0 0;
   max-width: 440px;
 }
 
@@ -804,8 +807,8 @@ h1 {
 .footer__column h2 {
   color: var(--orange);
   font-family: var(--font-heading);
-  font-size: 15px;
-  margin: 0 0 7px;
+  font-size: 21px;
+  margin: 0 0 6px;
   text-transform: uppercase;
 }
 
@@ -849,7 +852,7 @@ h1 {
   }
 
   h1 {
-    font-size: clamp(56px, 6vw, 66px);
+    font-size: clamp(64px, 6.8vw, 82px);
   }
 
   .trust-strip__inner {
@@ -954,7 +957,7 @@ h1 {
   }
 
   h1 {
-    font-size: clamp(52px, 14vw, 72px);
+    font-size: clamp(60px, 15vw, 78px);
   }
 
   .stats {
@@ -1048,7 +1051,7 @@ h1 {
   .section-heading h2,
   .mobile-service h2,
   .final-cta h2 {
-    font-size: 43px;
+    font-size: 50px;
   }
 
   .hero-title__line {
