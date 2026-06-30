@@ -839,6 +839,19 @@ h1 {
   margin: 0;
 }
 
+.footer__credit-link {
+  font-weight: 700;
+  text-decoration: none;
+  text-underline-offset: 3px;
+  transition: color 180ms ease, text-decoration-color 180ms ease;
+}
+
+.footer__credit-link:hover,
+.footer__credit-link:focus-visible {
+  color: var(--orange);
+  text-decoration: underline;
+}
+
 @media (max-width: 1050px) {
   .container {
     padding: 0 28px;
