@@ -43,6 +43,7 @@
           <nav class="nav" aria-label="Main navigation">
             <a class="nav__link nav__link--active" href="#main">Home</a>
             <a class="nav__link" href="#services">Services</a>
+            <a class="nav__link" href="#window-types">Window Types</a>
             <a class="nav__link" href="#process">About</a>
             <a class="nav__link" href="#contact">Contact</a>
           </nav>
@@ -92,7 +93,7 @@
           <aside class="quote-card" aria-labelledby="quote-title">
             <h2 id="quote-title">Start your quote</h2>
             <p>Takes less than 60 seconds</p>
-            <form action="#" method="get" class="quote-form">
+            <form action="mailto:rshelby78@gmail.com" method="post" enctype="text/plain" class="quote-form">
               <label>
                 Vehicle Type
                 <select name="vehicle-type" aria-label="Vehicle type">
@@ -121,6 +122,15 @@
                 VIN
                 <input type="text" name="vin" placeholder="17-character VIN" />
               </label>
+              <label>
+                How will this service be handled?
+                <select name="payment-handling" aria-label="How will this service be handled?">
+                  <option>Select an option</option>
+                  <option>Paying out of pocket</option>
+                  <option>Insurance claim</option>
+                  <option>Not sure yet</option>
+                </select>
+              </label>
               <button type="submit">Get my free quote <span aria-hidden="true">➜</span></button>
               <small>No obligation · Insurance claims welcome</small>
             </form>
@@ -133,6 +143,17 @@
           <div class="section-heading section-heading--center">
             <p class="eyebrow eyebrow--centered">What we do</p>
             <h2 id="services-title">Our services</h2>
+          </div>
+          <div class="calibration-callout">
+            <div>
+              <p class="eyebrow">Certified Auto Glass Calibration Available</p>
+              <h3>Safety systems need the right setup after glass replacement.</h3>
+              <p>
+                Modern vehicles often require camera and sensor calibration after windshield replacement. Shelby Auto Glass
+                is certified to handle auto glass calibration, helping keep your safety systems working properly.
+              </p>
+            </div>
+            <a class="button button--outline" href="#quote-title">Ask about calibration</a>
           </div>
           <div class="service-grid">
             <article class="service-card service-card--repair">
@@ -165,6 +186,37 @@
                 <h3>Mobile Service</h3>
                 <p>We come to your home, office, or anywhere in Tucson. No shop visit needed.</p>
                 <a href="#quote-title">Learn more <span aria-hidden="true">›</span></a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="window-types section" id="window-types" aria-labelledby="window-types-title">
+        <div class="container">
+          <div class="section-heading section-heading--center">
+            <p class="eyebrow eyebrow--centered">Glass guide</p>
+            <h2 id="window-types-title">Window types</h2>
+            <p class="section-subtitle">Not sure what to call the glass you need? Use this quick guide when requesting service.</p>
+          </div>
+          <div class="window-types__grid">
+            <article class="window-guide-card">
+              <img src="assets/window-types/auto-glass-locations.svg" alt="Vehicle diagram showing windshield, door glass, vent glass, quarter glass, and back glass locations" />
+              <div>
+                <h3>Common auto glass names</h3>
+                <p>
+                  Windshields are in the front, back glass is in the rear, door glass rolls up and down, and smaller vent or quarter glass pieces sit near the doors or rear sides.
+                </p>
+              </div>
+            </article>
+            <article class="window-guide-card">
+              <img src="assets/window-types/adas-calibration.svg" alt="Vehicle safety system diagram showing cameras and sensors that may require calibration" />
+              <div>
+                <h3>Calibration and safety features</h3>
+                <p>
+                  If your vehicle has lane alerts, adaptive cruise, blind spot detection, or cameras near the windshield, ask us about certified calibration during your quote.
+                </p>
               </div>
             </article>
           </div>
@@ -337,6 +389,7 @@
           <a href="#services">Side &amp; Rear Glass</a>
           <a href="#mobile-service">Mobile Service</a>
           <a href="#services">ADAS Calibration</a>
+          <a href="#window-types">Window Types Guide</a>
           <a href="#quote-title">Insurance Claims</a>
         </nav>
 
