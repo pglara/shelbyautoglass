@@ -1058,3 +1058,169 @@ h1 {
     white-space: normal;
   }
 }
+
+.service-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.service-card--adas {
+  background-image: linear-gradient(180deg, rgba(5, 6, 9, 0.04) 0%, rgba(7, 8, 12, 0.24) 34%, rgba(7, 8, 12, 0.82) 66%, rgba(7, 8, 12, 0.99) 100%),
+    url("assets/services/work-truck2.jpeg");
+}
+
+.service-card--insurance {
+  background-image: linear-gradient(180deg, rgba(5, 6, 9, 0.04) 0%, rgba(7, 8, 12, 0.24) 34%, rgba(7, 8, 12, 0.82) 66%, rgba(7, 8, 12, 0.99) 100%),
+    url("assets/services/windshield-replacement.jpeg");
+}
+
+.service-hero {
+  background: linear-gradient(90deg, rgba(5, 7, 10, 0.96) 0%, rgba(7, 9, 13, 0.86) 44%, rgba(7, 9, 13, 0.45) 100%), var(--service-hero-image);
+  background-position: center;
+  background-size: cover;
+  min-height: 560px;
+}
+
+.service-hero__inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 560px;
+  max-width: 780px;
+  padding-bottom: 88px;
+  padding-top: 88px;
+}
+
+.service-hero p:not(.eyebrow) {
+  color: #d6d1c7;
+  font-size: 18px;
+  line-height: 1.7;
+  margin: 24px 0 0;
+  max-width: 650px;
+}
+
+.service-detail {
+  background: var(--section);
+}
+
+.service-detail__grid {
+  display: grid;
+  gap: 56px;
+  grid-template-columns: minmax(0, 1fr) 340px;
+}
+
+.service-copy h2,
+.service-sidebar h2 {
+  font-size: 42px;
+  margin: 0 0 18px;
+}
+
+.service-copy p,
+.service-copy li,
+.service-sidebar p {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.service-copy ul {
+  display: grid;
+  gap: 12px;
+  margin: 0 0 30px;
+  padding-left: 22px;
+}
+
+.service-copy li::marker {
+  color: var(--orange);
+}
+
+.service-sidebar {
+  align-self: start;
+  background: var(--card-brown);
+  border: 1px solid var(--line-bright);
+  border-radius: 7px;
+  padding: 30px;
+}
+
+.service-sidebar strong {
+  color: var(--orange);
+  display: block;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  margin-top: 18px;
+  text-transform: uppercase;
+}
+
+.adas-feature-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 22px 0 34px;
+}
+
+.adas-feature-list span {
+  border: 1px solid var(--line-bright);
+  border-radius: 999px;
+  color: #fff1e7;
+  font-size: 12px;
+  padding: 8px 12px;
+}
+
+.related-services {
+  background: #090b11;
+}
+
+.related-grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.related-card {
+  background: #151512;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 24px;
+}
+
+.related-card span {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 28px;
+  letter-spacing: var(--heading-track);
+  text-transform: uppercase;
+}
+
+.related-card small {
+  color: var(--orange);
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 880px) {
+  .service-grid,
+  .service-detail__grid,
+  .related-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .service-hero,
+  .service-hero__inner {
+    min-height: auto;
+  }
+
+  .service-hero__inner {
+    padding-bottom: 64px;
+    padding-top: 64px;
+  }
+}
+
+@media (min-width: 881px) {
+  .nav {
+    gap: 18px;
+  }
+
+  .nav__link {
+    white-space: nowrap;
+  }
+}
