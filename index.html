@@ -3,15 +3,18 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Shelby Auto Glass | Tucson Auto Glass Experts</title>
+    <title>Shelby Auto Glass | Tucson Windshield Repair, Replacement & ADAS Calibration</title>
     <meta
       name="description"
-      content="Shelby Auto Glass provides windshield repair, windshield replacement, side and rear glass, and mobile auto glass service in Tucson, Arizona."
+      content="Shelby Auto Glass provides mobile-first windshield repair, windshield replacement, side and rear glass, insurance claim help, and certified Auto Glass ADAS Calibration in Tucson, Arizona."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
+    <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"AutoRepair","name":"Shelby Auto Glass","telephone":"+1-520-981-9770","email":"info@shelbyautoglass.com","address":{"@type":"PostalAddress","streetAddress":"1887 W. Grant Rd., Suite 102","addressLocality":"Tucson","addressRegion":"AZ","postalCode":"85745","addressCountry":"US"},"areaServed":["Tucson AZ","Marana AZ","Oro Valley AZ","Vail AZ","Sahuarita AZ"],"openingHours":"Mo-Fr 08:00-17:00","url":"https://shelbyautoglass.com","priceRange":"$$","description":"Tucson auto glass repair, windshield replacement, mobile service, insurance claim help, and certified Auto Glass ADAS Calibration."}
+    </script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -42,12 +45,19 @@
 
           <nav class="nav" aria-label="Main navigation">
             <a class="nav__link nav__link--active" href="#main">Home</a>
-            <a class="nav__link" href="services/windshield-repair.html">Repair</a>
-            <a class="nav__link" href="services/windshield-replacement.html">Replacement</a>
-            <a class="nav__link" href="services/side-rear-glass.html">Side &amp; Rear</a>
-            <a class="nav__link" href="services/mobile-auto-glass-service.html">Mobile</a>
-            <a class="nav__link" href="services/adas-calibration.html">ADAS</a>
-            <a class="nav__link" href="services/insurance-claims.html">Insurance</a>
+            <a class="nav__link" href="#about">About Us</a>
+            <div class="nav__item nav__item--dropdown">
+              <a class="nav__link" href="#services">Services</a>
+              <div class="nav__dropdown" aria-label="Services submenu">
+                <a href="services/windshield-repair.html">Windshield Repair</a>
+                <a href="services/windshield-replacement.html">Windshield Replacement</a>
+                <a href="services/side-rear-glass.html">Side &amp; Rear Glass</a>
+                <a href="services/mobile-auto-glass-service.html">Mobile Auto Glass Service</a>
+                <a href="services/adas-calibration.html">ADAS Calibration</a>
+                <a href="services/insurance-claims.html">Insurance Claims</a>
+              </div>
+            </div>
+            <a class="nav__link" href="#contact">Contact Us</a>
           </nav>
 
           <div class="header-actions">
@@ -73,7 +83,7 @@
               certified techs, and a lifetime warranty. We treat every car like it’s our own.
             </p>
             <div class="hero__buttons">
-              <a class="button" href="#quote-title">Get a free quote <span aria-hidden="true">➜</span></a>
+              <a class="button" href="#quote-title">Request a quote <span aria-hidden="true">➜</span></a>
               <a class="button button--outline" href="tel:+15209819770"><span aria-hidden="true">☎</span> Call now</a>
             </div>
             <dl class="stats" aria-label="Shelby Auto Glass statistics">
@@ -123,6 +133,14 @@
                 <input type="text" name="zip" inputmode="numeric" autocomplete="postal-code" placeholder="e.g. 85712" />
               </label>
               <label>
+                Phone
+                <input type="tel" name="phone" inputmode="tel" autocomplete="tel" placeholder="(520) 555-0123" />
+              </label>
+              <label>
+                Email
+                <input type="email" name="email" inputmode="email" autocomplete="email" placeholder="you@example.com" />
+              </label>
+              <label>
                 VIN
                 <input type="text" name="vin" placeholder="17-character VIN" />
               </label>
@@ -130,6 +148,23 @@
               <small>No obligation · Insurance claims welcome</small>
             </form>
           </aside>
+        </div>
+      </section>
+
+
+      <section class="about section" id="about" aria-labelledby="about-title">
+        <div class="container about__grid">
+          <div>
+            <p class="eyebrow eyebrow--ruled">About Shelby Auto Glass</p>
+            <h2 id="about-title">Local experience. Certified calibration.</h2>
+            <p>Shelby Auto Glass is a Tucson auto glass team focused on safe installations, honest recommendations, and convenient service for busy drivers. Our technicians help with repair, replacement, insurance claims, mobile appointments, and modern driver-assistance glass systems.</p>
+            <p class="certification-callout"><strong>Certified in Auto Glass ADAS Calibration</strong> for vehicles that require camera and safety-system recalibration after windshield service.</p>
+          </div>
+          <div class="about__cards" aria-label="Why choose Shelby Auto Glass">
+            <article><span aria-hidden="true">✓</span><h3>Quality workmanship</h3><p>Careful prep, proper materials, and warranty-backed windshield replacement.</p></article>
+            <article><span aria-hidden="true">◷</span><h3>Convenient scheduling</h3><p>Same-day availability and mobile service options across the Tucson metro area.</p></article>
+            <article><span aria-hidden="true">⬡</span><h3>Insurance assistance</h3><p>Helpful guidance for auto glass claims from quote through completion.</p></article>
+          </div>
         </div>
       </section>
 
@@ -332,9 +367,38 @@
           </div>
         </div>
       </section>
+
+      <section class="contact section" id="contact" aria-labelledby="contact-title">
+        <div class="container contact__grid">
+          <aside class="quote-card contact__form" aria-labelledby="contact-title">
+            <h2 id="contact-title">Contact Us</h2>
+            <p>Request a quote or schedule service.</p>
+            <form action="#" method="get" class="quote-form">
+              <label>Name<input type="text" name="name" autocomplete="name" placeholder="Your name" /></label>
+              <label>Phone<input type="tel" name="phone" inputmode="tel" autocomplete="tel" placeholder="(520) 555-0123" /></label>
+              <label>Email<input type="email" name="email" inputmode="email" autocomplete="email" placeholder="you@example.com" /></label>
+              <label>Service Needed<select name="service"><option>Windshield Repair</option><option>Windshield Replacement</option><option>Side &amp; Rear Glass</option><option>Mobile Auto Glass Service</option><option>ADAS Calibration</option><option>Insurance Claims</option></select></label>
+              <button type="submit">Request service <span aria-hidden="true">➜</span></button>
+            </form>
+          </aside>
+          <div class="contact__details">
+            <p class="eyebrow eyebrow--ruled">Tucson auto glass help</p>
+            <h2>Everything you need in one place</h2>
+            <div class="contact__cards">
+              <p><strong>Phone</strong><a href="tel:+15209819770">(520) 981-9770</a></p>
+              <p><strong>Email</strong><a href="mailto:info@shelbyautoglass.com">info@shelbyautoglass.com</a></p>
+              <p><strong>Hours</strong>Mon–Fri: 8am–5pm</p>
+              <p><strong>Service area</strong>Tucson, Marana, Oro Valley, Vail, Sahuarita and nearby communities</p>
+              <p><strong>Shop location</strong>1887 W. Grant Rd., Suite 102, Tucson, AZ 85745</p>
+            </div>
+            <iframe class="map" title="Shelby Auto Glass map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=1887%20W.%20Grant%20Rd.%20Suite%20102%20Tucson%20AZ%2085745&output=embed"></iframe>
+          </div>
+        </div>
+      </section>
+      <div class="mobile-sticky-actions" aria-label="Quick contact actions"><a href="tel:+15209819770">Call Now</a><a href="#quote-title">Request Quote</a></div>
     </main>
 
-    <footer class="footer" id="contact">
+    <footer class="footer">
       <div class="container footer__inner">
         <section class="footer__brand" aria-label="Shelby Auto Glass">
           <a class="logo logo--footer" href="#" aria-label="Shelby Auto Glass home">
@@ -363,7 +427,7 @@
 
         <nav class="footer__column" aria-label="Company">
           <h2>Company</h2>
-          <a href="#process">About Us</a>
+          <a href="#about">About Us</a>
           <a href="#quote-title">Get a Quote</a>
           <a href="#contact">Contact</a>
           <a href="#">Privacy Policy</a>

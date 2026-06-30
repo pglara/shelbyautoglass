@@ -1243,3 +1243,214 @@ h1 {
     white-space: nowrap;
   }
 }
+
+/* Mobile-first UX, SEO content sections, and simplified navigation */
+html,
+body {
+  overflow-x: hidden;
+}
+
+img,
+iframe {
+  max-width: 100%;
+}
+
+a,
+button,
+.nav-toggle-label,
+.quote-form input,
+.quote-form select {
+  min-height: 44px;
+}
+
+.nav__item {
+  position: relative;
+}
+
+.nav__dropdown {
+  background: #0f171d;
+  border: 1px solid var(--line-bright);
+  border-radius: 8px;
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.4);
+  display: none;
+  left: 50%;
+  min-width: 245px;
+  padding: 10px;
+  position: absolute;
+  top: calc(100% + 12px);
+  transform: translateX(-50%);
+  z-index: 30;
+}
+
+.nav__dropdown a {
+  border-radius: 5px;
+  color: var(--muted);
+  display: block;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 11px 12px;
+}
+
+.nav__dropdown a:hover,
+.nav__dropdown a:focus-visible {
+  background: rgba(10, 168, 192, 0.12);
+  color: var(--orange);
+}
+
+.nav__item--dropdown:hover .nav__dropdown,
+.nav__item--dropdown:focus-within .nav__dropdown {
+  display: block;
+}
+
+.about,
+.contact {
+  background: #090f15;
+}
+
+.about__grid,
+.contact__grid {
+  display: grid;
+  gap: 42px;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.82fr);
+  align-items: start;
+}
+
+.about h2,
+.contact h2 {
+  font-size: clamp(46px, 5vw, 64px);
+  max-width: 680px;
+}
+
+.about p,
+.contact__details p {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+.certification-callout {
+  background: rgba(10, 168, 192, 0.12);
+  border: 1px solid var(--line-bright);
+  border-radius: 8px;
+  padding: 18px;
+}
+
+.certification-callout strong,
+.contact__cards strong {
+  color: var(--orange);
+}
+
+.about__cards,
+.contact__cards {
+  display: grid;
+  gap: 14px;
+}
+
+.about__cards article,
+.contact__cards p {
+  background: var(--card-brown);
+  border: 1px solid var(--line-bright);
+  border-radius: 8px;
+  margin: 0;
+  padding: 20px;
+}
+
+.about__cards span {
+  color: var(--orange);
+  font-size: 22px;
+}
+
+.about__cards h3 {
+  font-size: 28px;
+  margin: 8px 0;
+}
+
+.contact__cards a,
+.contact__cards strong {
+  display: block;
+}
+
+.map {
+  border: 0;
+  border-radius: 8px;
+  height: 260px;
+  margin-top: 18px;
+  width: 100%;
+}
+
+.mobile-sticky-actions {
+  display: none;
+}
+
+@media (max-width: 880px) {
+  .nav__item,
+  .nav__item .nav__link {
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav__dropdown {
+    background: rgba(10, 168, 192, 0.08);
+    border: 0;
+    box-shadow: none;
+    display: grid;
+    left: auto;
+    min-width: 0;
+    padding: 0 0 8px;
+    position: static;
+    transform: none;
+    width: 100%;
+  }
+
+  .about__grid,
+  .contact__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact__form {
+    order: -1;
+  }
+
+  .mobile-sticky-actions {
+    bottom: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    left: 0;
+    position: fixed;
+    right: 0;
+    z-index: 100;
+  }
+
+  .mobile-sticky-actions a {
+    align-items: center;
+    background: var(--orange);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: #fff;
+    display: flex;
+    font-size: 12px;
+    font-weight: 900;
+    justify-content: center;
+    letter-spacing: 0.08em;
+    min-height: 54px;
+    text-transform: uppercase;
+  }
+
+  body {
+    padding-bottom: 54px;
+  }
+}
+
+@media (max-width: 560px) {
+  .stats {
+    gap: 20px;
+  }
+
+  .quote-form input,
+  .quote-form select {
+    min-height: 46px;
+  }
+
+  .footer__bottom {
+    font-size: 12px;
+  }
+}
