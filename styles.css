@@ -26,7 +26,7 @@
   --section-y: 96px;
   --section-heading-gap: 48px;
   --heading-track: 0.045em;
-  --hero-image: url("assets/hero/windshield-replacement.jpeg");
+  --hero-image: url("assets/services/work-truck2.jpeg");
 }
 
 * {
@@ -223,7 +223,7 @@ select {
 .hero {
   background: linear-gradient(90deg, rgba(5, 7, 10, 0.96) 0%, rgba(7, 9, 13, 0.89) 38%, rgba(7, 9, 13, 0.72) 100%),
     var(--hero-image);
-  background-position: center right;
+  background-position: center;
   background-size: cover;
   min-height: 729px;
   position: relative;
@@ -474,7 +474,7 @@ h1 {
 
 .service-card--replacement {
   background-image: linear-gradient(180deg, rgba(5, 6, 9, 0.04) 0%, rgba(7, 8, 12, 0.24) 34%, rgba(7, 8, 12, 0.82) 66%, rgba(7, 8, 12, 0.99) 100%),
-    url("assets/services/windshield-replacement.jpeg");
+    url("assets/hero/windshield-replacement.jpeg");
   background-position: center;
 }
 
@@ -486,8 +486,8 @@ h1 {
 
 .service-card--mobile {
   background-image: linear-gradient(180deg, rgba(5, 6, 9, 0.04) 0%, rgba(7, 8, 12, 0.24) 34%, rgba(7, 8, 12, 0.82) 66%, rgba(7, 8, 12, 0.99) 100%),
-    url("assets/services/work-truck2.jpeg");
-  background-position: center;
+    url("assets/mobile/work-truck.jpeg");
+  background-position: center left;
 }
 
 .service-card__content {
@@ -649,7 +649,7 @@ h1 {
 
 .mobile-service__image {
   background: linear-gradient(90deg, rgba(4, 6, 10, 0.08), rgba(6, 8, 13, 0.74)),
-    url("assets/mobile/work-truck.jpeg");
+    url("assets/services/work-truck2.jpeg");
   background-position: center;
   background-size: cover;
 }
@@ -1084,12 +1084,14 @@ h1 {
 
 .service-card--adas {
   background-image: linear-gradient(180deg, rgba(5, 6, 9, 0.04) 0%, rgba(7, 8, 12, 0.24) 34%, rgba(7, 8, 12, 0.82) 66%, rgba(7, 8, 12, 0.99) 100%),
-    url("assets/services/work-truck2.jpeg");
+    url("assets/services/IMG_9645.jpeg");
+  background-position: center;
 }
 
 .service-card--insurance {
   background-image: linear-gradient(180deg, rgba(5, 6, 9, 0.04) 0%, rgba(7, 8, 12, 0.24) 34%, rgba(7, 8, 12, 0.82) 66%, rgba(7, 8, 12, 0.99) 100%),
-    url("assets/services/windshield-replacement.jpeg");
+    url("assets/services/work-truck2.jpeg");
+  background-position: center;
 }
 
 .service-hero {
