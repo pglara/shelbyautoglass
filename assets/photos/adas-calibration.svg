@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-label="ADAS calibration target equipment positioned in front of a vehicle at Shelby Auto Glass">
+  <defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#111820"/><stop offset="1" stop-color="#e8e4db"/></linearGradient><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0.2"/><feComponentTransfer><feFuncA type="table" tableValues="0 0.08"/></feComponentTransfer></filter></defs>
+  <rect width="1200" height="800" fill="url(#g)"/>
+  <rect width="1200" height="800" filter="url(#grain)" opacity=".55"/>
+  <rect x="0" y="0" width="1200" height="800" fill="none" stroke="#0aa8c0" stroke-opacity=".35" stroke-width="10"/>
+  <g opacity=".92">
+    <rect x="135" y="180" width="930" height="430" rx="34" fill="#e8e4db" opacity=".88"/>
+    <path d="M210 510 C315 250 880 250 1000 510 Z" fill="#0b1218" opacity=".82"/>
+    <path d="M260 480 C355 300 825 300 935 480 Z" fill="#d8f8ff" opacity=".24"/>
+    <rect x="230" y="525" width="740" height="74" rx="12" fill="#070d12" opacity=".65"/>
+    <circle cx="330" cy="640" r="72" fill="#0b1218"/><circle cx="870" cy="640" r="72" fill="#0b1218"/>
+    <circle cx="330" cy="640" r="36" fill="#b9b3a9"/><circle cx="870" cy="640" r="36" fill="#b9b3a9"/>
+  </g>
+  <g transform="translate(115 75)"><rect width="410" height="140" rx="18" fill="#effcff" opacity=".92"/><text x="34" y="58" font-family="Arial, sans-serif" font-size="46" font-weight="900" fill="#087f9a">SHELBY</text><text x="35" y="108" font-family="Arial, sans-serif" font-size="38" font-weight="900" fill="#101820">AUTO GLASS</text></g>
+  <text x="76" y="742" font-family="Arial, sans-serif" font-size="42" font-weight="900" fill="#effcff" opacity=".92">ADAS
+CALIBRATION</text>
+</svg>

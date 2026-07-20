@@ -26,7 +26,7 @@
   --section-y: 96px;
   --section-heading-gap: 48px;
   --heading-track: 0.045em;
-  --hero-image: url("assets/mobile/work-truck.svg");
+  --hero-image: url("assets/photos/mobile-service-van.svg");
 }
 
 * {
@@ -659,7 +659,7 @@ h1 {
 
 .mobile-service__image {
   background: linear-gradient(90deg, rgba(4, 6, 10, 0.08), rgba(6, 8, 13, 0.74)),
-    url("assets/services/work-truck.svg");
+    url("assets/photos/branded-van-front.svg");
   background-position: center;
   background-size: cover;
 }
@@ -1849,14 +1849,14 @@ button,
 
 @media (max-width: 760px) {
   .helpbot {
-    bottom: calc(70px + env(safe-area-inset-bottom, 0px));
-    left: 16px;
+    bottom: calc(18px + env(safe-area-inset-bottom, 0px));
+    left: auto;
     right: calc(16px + env(safe-area-inset-right, 0px));
   }
 
   .helpbot__panel {
-    max-height: calc(100vh - 116px - env(safe-area-inset-bottom, 0px));
-    width: 100%;
+    max-height: calc(100vh - 88px - env(safe-area-inset-bottom, 0px));
+    width: min(380px, calc(100vw - 32px - env(safe-area-inset-right, 0px)));
   }
 
   .helpbot__launcher {
