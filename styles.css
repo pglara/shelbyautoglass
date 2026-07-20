@@ -1569,9 +1569,9 @@ button,
 .form-status--error { color: #ffb4a8; }
 
 .helpbot {
-  bottom: 92px;
+  bottom: calc(92px + env(safe-area-inset-bottom, 0px));
   position: fixed;
-  right: 18px;
+  right: calc(18px + env(safe-area-inset-right, 0px));
   z-index: 999;
 }
 
@@ -1591,6 +1591,7 @@ button,
   color: #effcff;
   min-height: 52px;
   padding: 0 22px;
+  transition: box-shadow 220ms ease, transform 220ms ease;
 }
 
 .helpbot__panel {
@@ -1601,9 +1602,24 @@ button,
   color: var(--text);
   display: grid;
   grid-template-rows: auto 1fr auto auto;
-  max-height: min(640px, calc(100vh - 130px));
+  max-height: min(640px, calc(100vh - 130px - env(safe-area-inset-bottom, 0px)));
+  opacity: 0;
   overflow: hidden;
-  width: min(380px, calc(100vw - 28px));
+  pointer-events: none;
+  transform: translateY(12px) scale(0.98);
+  transform-origin: bottom right;
+  transition: opacity 240ms ease, transform 240ms ease;
+  width: min(380px, calc(100vw - 28px - env(safe-area-inset-right, 0px)));
+}
+
+.helpbot--open .helpbot__panel {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+.helpbot__panel--closing {
+  pointer-events: none;
 }
 
 .helpbot__panel header {
@@ -1628,8 +1644,9 @@ button,
   border: 1px solid rgba(255,255,255,0.45);
   border-radius: 8px;
   color: #fff;
-  min-height: 34px;
-  min-width: 34px;
+  min-height: 38px;
+  min-width: 38px;
+  transition: background 180ms ease, transform 180ms ease;
 }
 
 .helpbot__messages {
@@ -1672,7 +1689,9 @@ button,
   border: 1px solid rgba(135, 214, 234, 0.55);
   border-radius: 999px;
   color: var(--brand-blue-soft);
+  min-height: 38px;
   padding: 8px 10px;
+  transition: background 180ms ease, transform 180ms ease;
 }
 
 .helpbot__form {
@@ -1704,7 +1723,40 @@ button,
   background: var(--brand-blue);
   border-radius: 10px;
   color: #041116;
+  min-height: 44px;
   padding: 0 14px;
+  transition: filter 180ms ease, transform 180ms ease;
+}
+
+.helpbot__launcher:hover,
+.helpbot__panel header button:hover,
+.helpbot__quick button:hover,
+.helpbot__form button:hover {
+  transform: translateY(-1px);
+}
+
+.helpbot__launcher:active,
+.helpbot__panel header button:active,
+.helpbot__quick button:active,
+.helpbot__form button:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+.helpbot__panel header button:hover,
+.helpbot__quick button:hover {
+  background: rgba(135, 214, 234, 0.14);
+}
+
+.helpbot__form button:hover {
+  filter: brightness(1.08);
+}
+
+.helpbot__status {
+  height: 1px;
+  left: -10000px;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
 }
 
 .helpbot button:focus-visible,
@@ -1717,11 +1769,17 @@ button,
 
 @media (max-width: 760px) {
   .helpbot {
-    bottom: 78px;
-    right: 12px;
+    bottom: calc(78px + env(safe-area-inset-bottom, 0px));
+    left: 12px;
+    right: calc(12px + env(safe-area-inset-right, 0px));
   }
 
   .helpbot__panel {
-    max-height: calc(100vh - 104px);
+    max-height: calc(100vh - 104px - env(safe-area-inset-bottom, 0px));
+    width: 100%;
+  }
+
+  .helpbot__launcher {
+    float: right;
   }
 }
