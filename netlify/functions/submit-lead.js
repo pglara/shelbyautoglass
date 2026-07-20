@@ -6,6 +6,48 @@ const buckets = new Map();
 const clean = (value) => String(value ?? '').replace(/[<>]/g, '').replace(/[\r\n]+/g, ' ').trim().slice(0, 2500);
 const requiredAny = (lead, fields) => fields.some((field) => clean(lead[field]));
 
+function parseUrlEncoded(body) {
+  return Object.fromEntries(new URLSearchParams(body));
+}
+
+function parseMultipart(body, boundary) {
+  if (!boundary) throw new Error('missing multipart boundary');
+  const lead = {};
+  const delimiter = `--${boundary}`;
+  body.split(delimiter).forEach((part) => {
+    const trimmed = part.trim();
+    if (!trimmed || trimmed === '--') return;
+    const [rawHeaders, ...contentParts] = part.split(/\r?\n\r?\n/);
+    const content = contentParts.join('\n\n').replace(/\r?\n--\s*$/, '').trim();
+    const name = /name="([^"]+)"/i.exec(rawHeaders || '')?.[1];
+    const filename = /filename="([^"]*)"/i.exec(rawHeaders || '')?.[1];
+    if (!name || filename) return;
+    lead[name] = content;
+  });
+  return lead;
+}
+
+function parseLead(event) {
+  const contentType = String(event.headers['content-type'] || event.headers['Content-Type'] || '').toLowerCase();
+  const rawBody = event.body || '';
+  const body = event.isBase64Encoded ? Buffer.from(rawBody, 'base64').toString('utf8') : rawBody;
+
+  if (contentType.includes('application/json') || (!contentType && body.trim().startsWith('{'))) {
+    return JSON.parse(body || '{}');
+  }
+
+  if (contentType.includes('application/x-www-form-urlencoded')) {
+    return parseUrlEncoded(body);
+  }
+
+  if (contentType.includes('multipart/form-data')) {
+    const boundary = /boundary=([^;]+)/i.exec(contentType)?.[1]?.replace(/^"|"$/g, '');
+    return parseMultipart(body, boundary);
+  }
+
+  throw new Error('unsupported content type');
+}
+
 function rateLimit(ip) {
   const now = Date.now();
   const bucket = buckets.get(ip) || { count: 0, reset: now + WINDOW_MS };
@@ -39,7 +81,7 @@ exports.handler = async (event) => {
   if (!rateLimit(ip)) return { statusCode: 429, body: 'Too many requests' };
 
   let lead;
-  try { lead = JSON.parse(event.body || '{}'); } catch { return { statusCode: 400, body: 'Invalid request' }; }
+  try { lead = parseLead(event); } catch { return { statusCode: 400, body: 'Invalid request' }; }
   if (clean(lead.website)) return { statusCode: 200, body: JSON.stringify({ ok: true }) };
   if (!requiredAny(lead, ['phone', 'email']) || !requiredAny(lead, ['leadSource', 'service', 'serviceType', 'glassLocation', 'originalMessage'])) return { statusCode: 422, body: 'Missing required lead details' };
 
