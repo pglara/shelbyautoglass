@@ -105,7 +105,7 @@
           <aside class="quote-card" aria-labelledby="quote-title">
             <h2 id="quote-title">Start your quote</h2>
             <p>Takes less than 60 seconds</p>
-            <form action="#" method="get" class="quote-form">
+            <form action="/.netlify/functions/submit-lead" method="post" class="quote-form lead-form" data-lead-source="Start Your Quote">
               <label>
                 Vehicle Type
                 <select name="vehicle-type" aria-label="Vehicle type">
@@ -144,6 +144,9 @@
                 VIN
                 <input type="text" name="vin" placeholder="17-character VIN" />
               </label>
+              <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" />
+              <input type="hidden" name="leadSource" value="Start Your Quote" />
+              <p class="form-consent">By submitting this request, you agree that Shelby Auto Glass may contact you by phone, text, or email regarding your service request. Message and data rates may apply.</p>
               <button type="submit">Get my free quote <span aria-hidden="true">➜</span></button>
               <small>No obligation · Insurance claims welcome</small>
             </form>
@@ -379,11 +382,14 @@
           <aside class="quote-card contact__form" aria-labelledby="contact-title">
             <h2 id="contact-title">Contact Us</h2>
             <p>Request a quote or schedule service.</p>
-            <form action="#" method="get" class="quote-form">
+            <form action="/.netlify/functions/submit-lead" method="post" class="quote-form lead-form" data-lead-source="Contact Us">
               <label>Name<input type="text" name="name" autocomplete="name" placeholder="Your name" /></label>
               <label>Phone<input type="tel" name="phone" inputmode="tel" autocomplete="tel" placeholder="(520) 555-0123" /></label>
               <label>Email<input type="email" name="email" inputmode="email" autocomplete="email" placeholder="you@example.com" /></label>
               <label>Service Needed<select name="service"><option>Windshield Repair</option><option>Windshield Replacement</option><option>Side &amp; Rear Glass</option><option>Mobile Auto Glass Service</option><option>ADAS Calibration</option><option>Insurance Claims</option></select></label>
+              <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" />
+              <input type="hidden" name="leadSource" value="Contact Us" />
+              <p class="form-consent">By submitting this request, you agree that Shelby Auto Glass may contact you by phone, text, or email regarding your service request. Message and data rates may apply.</p>
               <button type="submit">Request service <span aria-hidden="true">➜</span></button>
             </form>
           </aside>
@@ -452,5 +458,6 @@
         <p><a href="#">Privacy</a> · <a href="#">Terms</a> · <span>Powered by <a class="footer__credit-link" href="https://medinagroup.xyz" target="_blank" rel="noopener noreferrer">The Medina Group</a></span></p>
       </div>
     </footer>
+    <script src="help-bot.js" defer></script>
   </body>
 </html>
