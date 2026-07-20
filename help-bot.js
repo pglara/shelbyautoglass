@@ -5,7 +5,36 @@
   const ENDPOINT = '/.netlify/functions/submit-lead';
   const isDevelopment = ['localhost', '127.0.0.1', ''].includes(window.location.hostname);
   const consent = 'By submitting this request, you agree that Shelby Auto Glass may contact you by phone, text, or email regarding your service request. Message and data rates may apply.';
-  const initialOptions = ['Repair a chip or crack','Replace a windshield','Replace side or rear glass','Mobile service','ADAS calibration','Insurance claim','Get a quote','Ask another question'];
+  const welcomeMessage = `👋 Welcome to Shelby Auto Glass!
+
+Hi! I'm the Shelby Auto Glass virtual assistant. I'm here to help answer your questions, guide you to the right service, or help you get a fast, free quote.
+
+Whether you have a chipped windshield, need a full replacement, have broken side or rear glass, need ADAS calibration, or want help with an insurance claim, I'm here to make the process simple.
+
+How can I help you today?`;
+  const initialOptions = ['🚗 Start My Quote','🔧 Windshield Repair','🪟 Windshield Replacement','🚙 Side & Rear Glass','📍 Mobile Service','📡 ADAS Calibration','🛡 Insurance Claims','❓ Ask a Question','📞 Contact Shelby Auto Glass'];
+  const quickActionMap = {
+    '🚗 Start My Quote': 'Get a quote',
+    '🔧 Windshield Repair': 'Repair a chip or crack',
+    '🪟 Windshield Replacement': 'Replace a windshield',
+    '🚙 Side & Rear Glass': 'Replace side or rear glass',
+    '📍 Mobile Service': 'Mobile service',
+    '📡 ADAS Calibration': 'ADAS calibration',
+    '🛡 Insurance Claims': 'Insurance claim',
+    '❓ Ask a Question': 'Ask another question',
+    '📞 Contact Shelby Auto Glass': 'Contact Shelby Auto Glass'
+  };
+  const quickActionLabels = {
+    '🚗 Start My Quote': 'Start my free auto glass quote',
+    '🔧 Windshield Repair': 'Get help with windshield repair',
+    '🪟 Windshield Replacement': 'Get help with windshield replacement',
+    '🚙 Side & Rear Glass': 'Get help with side or rear glass',
+    '📍 Mobile Service': 'Ask about mobile auto glass service',
+    '📡 ADAS Calibration': 'Ask about ADAS calibration',
+    '🛡 Insurance Claims': 'Get help with an insurance claim',
+    '❓ Ask a Question': 'Ask Shelby Auto Glass a question',
+    '📞 Contact Shelby Auto Glass': 'Contact Shelby Auto Glass'
+  };
   const qa = [
     [/repair|replace|chip|crack/i,'Small chips and some short cracks may be repairable, but final repair eligibility depends on size, location, depth, age, and condition. Damage in the driver’s line of sight or reaching an edge often needs technician review.'],
     [/how long.*repair|repair.*take/i,'Many windshield repairs are quick, but timing depends on damage and schedule. Shelby Auto Glass will confirm the time before service.'],
@@ -39,15 +68,16 @@
     ['preferredDate','What appointment date would you prefer?'],['preferredTime','What time window works best?'],['drivable','Is the vehicle currently drivable?'],['urgency','How soon is service needed?',['As soon as possible','Within a few days','This week','Flexible','Emergency or vehicle unsecured']],['originalMessage','Anything else you want the team to know?'],['consent',consent + ' Please type yes to submit.']
   ];
   let state = { view:'closed', started:false, collecting:false, step:0, data:{ leadSource:'Help Bot', transcript:[] }, submitted:false, scrollTop:0 };
-  const root = document.createElement('div'); root.className='helpbot'; root.innerHTML = `<button type="button" class="helpbot__launcher" aria-label="Open Shelby Help Bot" aria-expanded="false" aria-controls="helpbot-panel">Need Help?</button><section id="helpbot-panel" class="helpbot__panel" role="dialog" aria-modal="false" aria-labelledby="helpbot-title" hidden><header><h2 id="helpbot-title">Shelby Help Bot</h2><button type="button" data-min aria-label="Minimize chat" title="Minimize chat">–</button><button type="button" data-close aria-label="Close chat" title="Close chat">×</button></header><div class="helpbot__messages" role="log" aria-live="polite"></div><div class="helpbot__quick"></div><form class="helpbot__form"><label for="helpbot-input">Type your message</label><input id="helpbot-input" autocomplete="off"/><button type="submit">Send</button></form><div class="helpbot__status" aria-live="polite" aria-atomic="true"></div></section>`; document.body.append(root);
+  const root = document.createElement('div'); root.className='helpbot'; root.innerHTML = `<button type="button" class="helpbot__launcher" aria-label="Open Shelby Help Bot" aria-expanded="false" aria-controls="helpbot-panel">Need Help?</button><section id="helpbot-panel" class="helpbot__panel" role="dialog" aria-modal="false" aria-labelledby="helpbot-title" hidden><header><div class="helpbot__brand" aria-hidden="true"><img src="assets/logo/shelby-logo-dark.webp" alt=""></div><h2 id="helpbot-title">Shelby Help Bot</h2><button type="button" data-min aria-label="Minimize chat" title="Minimize chat">–</button><button type="button" data-close aria-label="Close chat" title="Close chat">×</button></header><div class="helpbot__messages" role="log" aria-live="polite"></div><div class="helpbot__quick"></div><form class="helpbot__form"><label for="helpbot-input">Type your message</label><input id="helpbot-input" autocomplete="off"/><button type="submit">Send</button></form><div class="helpbot__status" aria-live="polite" aria-atomic="true"></div></section>`; document.body.append(root);
   const panel=root.querySelector('.helpbot__panel'), launcher=root.querySelector('.helpbot__launcher'), messages=root.querySelector('.helpbot__messages'), quick=root.querySelector('.helpbot__quick'), input=root.querySelector('input'), status=root.querySelector('.helpbot__status'), form=root.querySelector('form');
   const saveScroll = () => { state.scrollTop = messages.scrollTop; };
   const announce = text => { status.textContent = text; };
   const logDev = (...args) => { if (isDevelopment) console.warn(...args); };
   function setView(view){ state.view=view; const expanded=view==='open'; launcher.setAttribute('aria-expanded', String(expanded)); launcher.setAttribute('aria-label', expanded ? 'Shelby Help Bot is open' : 'Open Shelby Help Bot'); if(expanded){ panel.hidden=false; requestAnimationFrame(()=>{ root.classList.add('helpbot--open'); panel.classList.remove('helpbot__panel--closing'); messages.scrollTop=state.scrollTop || messages.scrollHeight; input.focus({preventScroll:true}); }); announce('Chat opened.'); } else { saveScroll(); panel.classList.add('helpbot__panel--closing'); root.classList.remove('helpbot--open'); const finish=()=>{ if(state.view!== 'open') panel.hidden=true; panel.classList.remove('helpbot__panel--closing'); panel.removeEventListener('transitionend', finish); }; panel.addEventListener('transitionend', finish); window.setTimeout(finish, 320); announce(view==='minimized' ? 'Chat minimized.' : 'Chat closed.'); launcher.focus({preventScroll:true}); } }
   function add(text, who='bot'){ const p=document.createElement('p'); p.className='helpbot__msg helpbot__msg--'+who; p.textContent=text; messages.append(p); messages.scrollTop=messages.scrollHeight; saveScroll(); state.data.transcript.push(`${who}: ${text}`); }
-  function buttons(arr){ quick.innerHTML=''; arr.forEach(v=>{ const b=document.createElement('button'); b.type='button'; b.textContent=v; b.addEventListener('click', e=>{ e.preventDefault(); e.stopPropagation(); handle(v); }); quick.append(b); }); }
-  function open(){ if(!state.started){ add('Hi! I’m the Shelby Auto Glass assistant. I can help you identify the service you may need, answer common questions, or start a quote. What can I help you with today?'); buttons(initialOptions); state.started=true;} setView('open'); }
+  function addWelcome(){ const article=document.createElement('article'); article.className='helpbot__welcome helpbot__msg helpbot__msg--bot'; article.setAttribute('aria-label','Welcome message from Shelby Auto Glass'); article.innerHTML='<strong>👋 Welcome to Shelby Auto Glass!</strong><span>Hi! I\'m the Shelby Auto Glass virtual assistant. I\'m here to help answer your questions, guide you to the right service, or help you get a fast, free quote.</span><span>Whether you have a chipped windshield, need a full replacement, have broken side or rear glass, need ADAS calibration, or want help with an insurance claim, I\'m here to make the process simple.</span><strong>How can I help you today?</strong>'; messages.append(article); messages.scrollTop=messages.scrollHeight; saveScroll(); state.data.transcript.push(`bot: ${welcomeMessage}`); }
+  function buttons(arr){ quick.innerHTML=''; arr.forEach(v=>{ const b=document.createElement('button'); b.type='button'; b.textContent=v; b.setAttribute('aria-label', quickActionLabels[v] || v); b.addEventListener('click', e=>{ e.preventDefault(); e.stopPropagation(); handle(quickActionMap[v] || v); }); quick.append(b); }); }
+  function open(){ if(!state.started){ addWelcome(); buttons(initialOptions); state.started=true;} setView('open'); }
   launcher.addEventListener('click', e=>{ e.preventDefault(); e.stopPropagation(); open(); });
   root.querySelector('[data-min]').addEventListener('click', e=>{ e.preventDefault(); e.stopPropagation(); setView('minimized'); });
   root.querySelector('[data-close]').addEventListener('click', e=>{ e.preventDefault(); e.stopPropagation(); setView('closed'); });
@@ -58,7 +88,8 @@
   function priority(){ const d=state.data; if(/Emergency|unsafe|shatter|collision|break-in|vandal/i.test(Object.values(d).join(' '))) return 'Urgent'; if(/sunroof|rv|semi|fleet|classic|exotic|rust|body/i.test(Object.values(d).join(' '))) return 'Specialty review needed'; if(d.name&&d.phone) return 'Quote requested'; return 'General question'; }
   async function submit(){ if(state.submitted) return; state.submitted=true; buttons([]); add('Thanks. Sending your request now.'); const payload={...state.data, leadPriority:priority(), serviceType:state.data.glassLocation||state.data.serviceType||'Website lead'}; try { const r=await fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}); if(!r.ok) throw Error('submit failed'); add('Thank you. Your request has been sent to Shelby Auto Glass. A team member will review the details and contact you to confirm pricing, glass availability, and scheduling.'); } catch(e){ state.submitted=false; add('Sorry, the request did not send. Please try again, or call Shelby Auto Glass at (520) 981-9770.'); logDev('Lead submission failed.', e); } }
   function handle(text){ if(!text) return; add(text,'user'); if(emergency.test(text)){ add('If there is immediate danger, serious injury, an active crime, or a child or pet trapped in a vehicle, contact emergency services or the proper local authority immediately. Shelby Auto Glass is not an emergency service.'); return; } if(unsafe.test(text)) add('For shattered or unstable glass: avoid touching loose glass, keep children and pets away, avoid slamming doors, and do not drive if visibility is blocked or glass may fall into the vehicle. Secure the vehicle only if it is safe.');
-    if(!state.collecting && /quote|schedule|replace|repair|mobile|insurance|claim|calibration|service|glass|windshield|chip|crack|shatter/i.test(text)){ state.collecting=true; state.data.serviceType=text; add('I can help collect the details for Shelby Auto Glass. Estimates are subject to inspection and glass availability, and scheduling is confirmed by the team.'); return ask(); }
+    if(!state.collecting && /quote|schedule|replace|repair|mobile|insurance|claim|calibration|service|glass|windshield|chip|crack|shatter/i.test(text)){ state.collecting=true; state.data.serviceType=text; add('Absolutely — I can help with that. I’ll collect a few details for the Shelby Auto Glass team so they can confirm pricing, glass availability, and scheduling.'); return ask(); }
+    if(!state.collecting && /contact|call|phone|shelby auto glass/i.test(text)){ add('Of course. You can call Shelby Auto Glass at (520) 981-9770. If you’d like, I can also collect your details here and have the team follow up.'); buttons(['Get a quote','Ask another question']); return; }
     if(state.collecting){ const [key]=fields[state.step]; if(key==='consent' && !/^yes|agree/i.test(text)){ add('No problem. I cannot submit without consent. You can call (520) 981-9770 instead.'); return; } state.data[key]=text; if(key==='paymentMethod' && /insurance/i.test(text)){ fields.splice(state.step+1,0,['insuranceCompany','What insurance company do you use?'],['policyholder','What is the policyholder name?'],['claimNumber','Claim number, if available? (Type skip if none.)'],['claimStarted','Has the claim already been started?'],['deductible','Deductible, if known? Coverage and deductible amounts are determined by your insurance provider.']); }
       state.step++; return state.step>=fields.length ? submit() : ask(); }
     const hit=qa.find(([re])=>re.test(text)); add(hit?hit[1]:'I can help with that. For exact policy or unusual situations, Shelby Auto Glass should review it. Would you like to start a quote or have the team follow up?'); buttons(['Get a quote','Ask another question']); }

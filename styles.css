@@ -1631,6 +1631,24 @@ button,
   padding: 12px 14px;
 }
 
+.helpbot__brand {
+  align-items: center;
+  background: #effcff;
+  border-radius: 10px;
+  display: flex;
+  height: 38px;
+  justify-content: center;
+  overflow: hidden;
+  padding: 4px;
+  width: 44px;
+}
+
+.helpbot__brand img {
+  display: block;
+  max-height: 100%;
+  max-width: 100%;
+}
+
 .helpbot__panel h2 {
   flex: 1;
   font-family: var(--font-body);
@@ -1660,9 +1678,44 @@ button,
 
 .helpbot__msg {
   border-radius: 14px;
+  line-height: 1.45;
   margin: 0;
   max-width: 88%;
   padding: 10px 12px;
+}
+
+.helpbot__welcome {
+  animation: helpbot-welcome-in 280ms ease both;
+  display: grid;
+  gap: 10px;
+  max-width: 94%;
+}
+
+.helpbot__welcome strong {
+  color: #effcff;
+  font-size: 15px;
+}
+
+.helpbot__welcome span {
+  display: block;
+}
+
+@keyframes helpbot-welcome-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .helpbot__welcome {
+    animation: none;
+  }
 }
 
 .helpbot__msg--bot {
@@ -1685,12 +1738,13 @@ button,
 }
 
 .helpbot__quick button {
-  background: transparent;
-  border: 1px solid rgba(135, 214, 234, 0.55);
+  background: #effcff;
+  border: 1px solid rgba(135, 214, 234, 0.65);
   border-radius: 999px;
-  color: var(--brand-blue-soft);
-  min-height: 38px;
-  padding: 8px 10px;
+  color: #05131a;
+  flex: 1 1 auto;
+  min-height: 40px;
+  padding: 9px 12px;
   transition: background 180ms ease, transform 180ms ease;
 }
 
@@ -1742,9 +1796,12 @@ button,
   transform: translateY(1px) scale(0.98);
 }
 
-.helpbot__panel header button:hover,
-.helpbot__quick button:hover {
+.helpbot__panel header button:hover {
   background: rgba(135, 214, 234, 0.14);
+}
+
+.helpbot__quick button:hover {
+  background: var(--brand-blue-soft);
 }
 
 .helpbot__form button:hover {
@@ -1781,5 +1838,13 @@ button,
 
   .helpbot__launcher {
     float: right;
+  }
+
+  .helpbot__messages {
+    min-height: 220px;
+  }
+
+  .helpbot__quick button {
+    flex-basis: calc(50% - 8px);
   }
 }
