@@ -19,15 +19,15 @@ function rateLimit(ip) {
 }
 
 function buildEmail(lead, recipient) {
-  const vehicle = [lead.vehicleYear, lead.vehicleMake, lead.vehicleModel].map(clean).filter(Boolean).join(' ') || clean(lead['vehicle-type']) || 'Vehicle not provided';
+  const vehicle = [lead.vehicleYear, lead.vehicleMake, lead.vehicleModel].map(clean).filter(Boolean).join(' ') || clean(lead.vehicleDescription || lead.vehicle || lead['vehicle-type']) || 'Vehicle not provided';
   const serviceType = clean(lead.serviceType || lead.service || lead.glassLocation || 'Website Lead');
   const customer = clean(lead.name) || 'Unknown Customer';
   const subject = `New Website Lead – ${serviceType} – ${customer} – ${vehicle}`;
   const rows = [
-    ['Lead source', lead.leadSource], ['Date/time submitted', new Date().toISOString()], ['Customer name', lead.name], ['Phone number', lead.phone], ['Email address', lead.email], ['Preferred contact method', lead.contactMethod],
-    ['Vehicle year/make/model', vehicle], ['VIN', lead.vin], ['License plate', lead.plate], ['Glass location', lead.glassLocation], ['Damage description', lead.damageType || lead.service], ['Damage size/location', [lead.damageSize, lead.lineOfSight, lead.edge].map(clean).filter(Boolean).join(' | ')], ['Safety or urgency concerns', [lead.safeToDrive, lead.inPlace, lead.urgency].map(clean).filter(Boolean).join(' | ')],
-    ['Mobile/shop preference', lead.servicePreference], ['Service ZIP/address', [lead.zip, lead.serviceAddress, lead.safeWorkArea, lead.coveredArea].map(clean).filter(Boolean).join(' | ')], ['Payment method', lead.paymentMethod], ['Insurance details', [lead.insuranceCompany, lead.policyholder, lead.claimNumber, lead.claimStarted, lead.deductible].map(clean).filter(Boolean).join(' | ')],
-    ['ADAS features', lead.adasFeatures], ['Preferred appointment', [lead.preferredDate, lead.preferredTime].map(clean).filter(Boolean).join(' | ')], ['Vehicle drivable', lead.drivable], ['Uploaded photo links/attachments', lead.photos], ['Customer original typed message', lead.originalMessage], ['Lead-priority label', lead.leadPriority], ['Full help bot transcript', Array.isArray(lead.transcript) ? lead.transcript.map(clean).join('\n') : lead.transcript]
+    ['Lead source', lead.leadSource], ['Timestamp', lead.submittedAt || new Date().toISOString()], ['Customer name', lead.name], ['Phone number', lead.phone], ['Email address', lead.email], ['Preferred contact method', lead.contactMethod],
+    ['Vehicle', vehicle], ['Vehicle details', lead.vehicleDescription || lead.vehicle], ['VIN', lead.vin], ['License plate', lead.plate], ['Requested service', serviceType], ['Glass location', lead.glassLocation], ['Damage description', lead.damageType || lead.service], ['Damage size/location', [lead.damageSize, lead.lineOfSight, lead.edge].map(clean).filter(Boolean).join(' | ')], ['Safety or urgency concerns', [lead.safeToDrive, lead.inPlace, lead.urgency].map(clean).filter(Boolean).join(' | ')],
+    ['Mobile/shop preference', lead.servicePreference], ['ZIP code', lead.zip], ['Service address/details', [lead.serviceAddress, lead.safeWorkArea, lead.coveredArea].map(clean).filter(Boolean).join(' | ')], ['Payment type', lead.paymentMethod], ['Insurance details', [lead.insuranceCompany, lead.policyholder, lead.claimNumber, lead.claimStarted, lead.deductible].map(clean).filter(Boolean).join(' | ')],
+    ['ADAS features', lead.adasFeatures], ['Preferred appointment', [lead.preferredDate, lead.preferredTime].map(clean).filter(Boolean).join(' | ')], ['Vehicle drivable', lead.drivable], ['Uploaded photo links/attachments', lead.photos], ['Customer question', lead.customerQuestion || lead.originalMessage], ['Lead-priority label', lead.leadPriority], ['Full chat transcript', Array.isArray(lead.transcript) ? lead.transcript.map(clean).join('\n') : lead.transcript]
   ];
   const body = [`To: ${recipient}`, `Subject: ${subject}`, '', ...rows.map(([label, value]) => `${label}: ${clean(value) || 'Not provided'}`)].join('\n');
   return { subject, body };
