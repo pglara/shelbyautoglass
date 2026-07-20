@@ -26,7 +26,7 @@
   --section-y: 96px;
   --section-heading-gap: 48px;
   --heading-track: 0.045em;
-  --hero-image: url("assets/services/work-truck2.jpeg");
+  --hero-image: url("assets/mobile/work-truck.jpeg");
 }
 
 * {
@@ -474,12 +474,6 @@ h1 {
   position: relative;
 }
 
-.service-card--mobile {
-  background-image: linear-gradient(180deg, rgba(5, 6, 9, 0.04) 0%, rgba(7, 8, 12, 0.24) 34%, rgba(7, 8, 12, 0.82) 66%, rgba(7, 8, 12, 0.99) 100%),
-    url("assets/mobile/work-truck.jpeg");
-  background-position: center left;
-}
-
 .service-card::after {
   background: linear-gradient(180deg, rgba(5, 6, 9, 0.04) 0%, rgba(7, 8, 12, 0.24) 34%, rgba(7, 8, 12, 0.82) 66%, rgba(7, 8, 12, 0.99) 100%);
   content: "";
@@ -498,11 +492,12 @@ h1 {
   width: 100%;
 }
 
-.service-card--repair .service-card__image { object-position: center 42%; }
-.service-card--replacement .service-card__image { object-position: center 48%; }
-.service-card--side .service-card__image { object-position: center 50%; }
+.service-card--repair .service-card__image { object-position: center 45%; }
+.service-card--replacement .service-card__image { object-position: center 46%; }
+.service-card--side .service-card__image { object-position: 34% 45%; }
+.service-card--mobile .service-card__image { object-position: 28% center; }
 .service-card--adas .service-card__image { object-position: center 45%; }
-.service-card--insurance .service-card__image { object-position: center 48%; }
+.service-card--insurance .service-card__image { object-position: center 42%; }
 
 .service-card__content {
   bottom: 0;
