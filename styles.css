@@ -26,7 +26,7 @@
   --section-y: 96px;
   --section-heading-gap: 48px;
   --heading-track: 0.045em;
-  --hero-image: url("assets/mobile/work-truck.jpeg");
+  --hero-image: url("assets/mobile/work-truck.svg");
 }
 
 * {
@@ -659,7 +659,7 @@ h1 {
 
 .mobile-service__image {
   background: linear-gradient(90deg, rgba(4, 6, 10, 0.08), rgba(6, 8, 13, 0.74)),
-    url("assets/services/work-truck2.jpeg");
+    url("assets/services/work-truck.svg");
   background-position: center;
   background-size: cover;
 }
@@ -1569,10 +1569,10 @@ button,
 .form-status--error { color: #ffb4a8; }
 
 .helpbot {
-  bottom: calc(92px + env(safe-area-inset-bottom, 0px));
+  bottom: calc(24px + env(safe-area-inset-bottom, 0px));
   position: fixed;
-  right: calc(18px + env(safe-area-inset-right, 0px));
-  z-index: 999;
+  right: calc(24px + env(safe-area-inset-right, 0px));
+  z-index: 10000;
 }
 
 .helpbot__launcher,
@@ -1589,7 +1589,9 @@ button,
   border-radius: 999px;
   box-shadow: 0 14px 38px rgba(0, 0, 0, 0.38);
   color: #effcff;
+  animation: helpbot-launcher-in 260ms ease both;
   min-height: 52px;
+  min-width: 52px;
   padding: 0 22px;
   transition: box-shadow 220ms ease, transform 220ms ease;
 }
@@ -1700,6 +1702,18 @@ button,
   display: block;
 }
 
+@keyframes helpbot-launcher-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @keyframes helpbot-welcome-in {
   from {
     opacity: 0;
@@ -1713,8 +1727,17 @@ button,
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .helpbot__launcher,
   .helpbot__welcome {
     animation: none;
+  }
+
+  .helpbot__launcher,
+  .helpbot__panel,
+  .helpbot__panel header button,
+  .helpbot__quick button,
+  .helpbot__form button {
+    transition: none;
   }
 }
 
@@ -1826,13 +1849,13 @@ button,
 
 @media (max-width: 760px) {
   .helpbot {
-    bottom: calc(78px + env(safe-area-inset-bottom, 0px));
-    left: 12px;
-    right: calc(12px + env(safe-area-inset-right, 0px));
+    bottom: calc(70px + env(safe-area-inset-bottom, 0px));
+    left: 16px;
+    right: calc(16px + env(safe-area-inset-right, 0px));
   }
 
   .helpbot__panel {
-    max-height: calc(100vh - 104px - env(safe-area-inset-bottom, 0px));
+    max-height: calc(100vh - 116px - env(safe-area-inset-bottom, 0px));
     width: 100%;
   }
 
@@ -1846,5 +1869,6 @@ button,
 
   .helpbot__quick button {
     flex-basis: calc(50% - 8px);
+    min-height: 48px;
   }
 }
