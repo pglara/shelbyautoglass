@@ -494,9 +494,9 @@ h1 {
 
 .service-card--repair .service-card__image { object-position: center 45%; }
 .service-card--replacement .service-card__image { object-position: center 46%; }
-.service-card--side .service-card__image { object-position: 34% 45%; }
+.service-card--side .service-card__image { object-position: 48% 48%; }
 .service-card--mobile .service-card__image { object-position: 28% center; }
-.service-card--adas .service-card__image { object-position: center 45%; }
+.service-card--adas .service-card__image { object-position: 55% 38%; }
 .service-card--insurance .service-card__image { object-position: center 42%; }
 
 .service-card__content {
