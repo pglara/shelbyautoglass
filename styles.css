@@ -1569,7 +1569,8 @@ button,
 .form-status--error { color: #ffb4a8; }
 
 .helpbot {
-  bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+  --helpbot-safe-area-bottom: env(safe-area-inset-bottom, 0px);
+  bottom: var(--helpbot-bottom-offset, calc(24px + var(--helpbot-safe-area-bottom)));
   position: fixed;
   right: calc(24px + env(safe-area-inset-right, 0px));
   z-index: 10000;
@@ -1849,7 +1850,7 @@ button,
 
 @media (max-width: 760px) {
   .helpbot {
-    bottom: calc(18px + env(safe-area-inset-bottom, 0px));
+    bottom: var(--helpbot-bottom-offset, calc(18px + var(--helpbot-safe-area-bottom)));
     left: auto;
     right: calc(16px + env(safe-area-inset-right, 0px));
   }
