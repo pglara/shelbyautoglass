@@ -1569,11 +1569,15 @@ button,
 .form-status--error { color: #ffb4a8; }
 
 .helpbot {
-  --helpbot-safe-area-bottom: env(safe-area-inset-bottom, 0px);
-  bottom: var(--helpbot-bottom-offset, calc(24px + var(--helpbot-safe-area-bottom)));
-  position: fixed;
-  right: calc(24px + env(safe-area-inset-right, 0px));
-  z-index: 10000;
+  bottom: 24px !important;
+  inset: auto 24px 24px auto !important;
+  left: auto !important;
+  margin-top: 0 !important;
+  position: fixed !important;
+  right: 24px !important;
+  top: auto !important;
+  transform: none !important;
+  z-index: 9999 !important;
 }
 
 .helpbot__launcher,
@@ -1850,9 +1854,12 @@ button,
 
 @media (max-width: 760px) {
   .helpbot {
-    bottom: var(--helpbot-bottom-offset, calc(18px + var(--helpbot-safe-area-bottom)));
-    left: auto;
-    right: calc(16px + env(safe-area-inset-right, 0px));
+    bottom: 20px !important;
+    inset: auto 16px 20px auto !important;
+    left: auto !important;
+    right: 16px !important;
+    top: auto !important;
+    transform: none !important;
   }
 
   .helpbot__panel {
