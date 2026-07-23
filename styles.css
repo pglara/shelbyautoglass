@@ -1538,7 +1538,7 @@ button,
   padding: 16px 18px;
 }
 
-@media (max-width: 760px) {
+@media (max-width: 768px) {
   .adas-gallery__grid {
     grid-template-columns: 1fr;
   }
@@ -1568,16 +1568,20 @@ button,
 .form-status--success { color: var(--brand-blue-soft); }
 .form-status--error { color: #ffb4a8; }
 
+#help-bot-launcher,
+.help-bot-launcher,
+.chatbot-trigger,
+.chat-widget-button,
 .helpbot {
   bottom: 24px !important;
   inset: auto 24px 24px auto !important;
   left: auto !important;
-  margin-top: 0 !important;
+  margin: 0 !important;
   position: fixed !important;
   right: 24px !important;
   top: auto !important;
   transform: none !important;
-  z-index: 9999 !important;
+  z-index: 99999 !important;
 }
 
 .helpbot__launcher,
@@ -1594,11 +1598,12 @@ button,
   border-radius: 999px;
   box-shadow: 0 14px 38px rgba(0, 0, 0, 0.38);
   color: #effcff;
-  animation: helpbot-launcher-in 260ms ease both;
   min-height: 52px;
   min-width: 52px;
   padding: 0 22px;
-  transition: box-shadow 220ms ease, transform 220ms ease;
+  margin: 0;
+  transform: none !important;
+  transition: box-shadow 220ms ease;
 }
 
 .helpbot__panel {
@@ -1707,18 +1712,6 @@ button,
   display: block;
 }
 
-@keyframes helpbot-launcher-in {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 @keyframes helpbot-welcome-in {
   from {
     opacity: 0;
@@ -1810,14 +1803,12 @@ button,
   transition: filter 180ms ease, transform 180ms ease;
 }
 
-.helpbot__launcher:hover,
 .helpbot__panel header button:hover,
 .helpbot__quick button:hover,
 .helpbot__form button:hover {
   transform: translateY(-1px);
 }
 
-.helpbot__launcher:active,
 .helpbot__panel header button:active,
 .helpbot__quick button:active,
 .helpbot__form button:active {
@@ -1852,10 +1843,14 @@ button,
   outline-offset: 2px;
 }
 
-@media (max-width: 760px) {
+@media (max-width: 768px) {
+  #help-bot-launcher,
+  .help-bot-launcher,
+  .chatbot-trigger,
+  .chat-widget-button,
   .helpbot {
-    bottom: 20px !important;
-    inset: auto 16px 20px auto !important;
+    bottom: 16px !important;
+    inset: auto 16px 16px auto !important;
     left: auto !important;
     right: 16px !important;
     top: auto !important;
@@ -1865,10 +1860,6 @@ button,
   .helpbot__panel {
     max-height: calc(100vh - 88px - env(safe-area-inset-bottom, 0px));
     width: min(380px, calc(100vw - 32px - env(safe-area-inset-right, 0px)));
-  }
-
-  .helpbot__launcher {
-    float: right;
   }
 
   .helpbot__messages {

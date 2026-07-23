@@ -39,19 +39,23 @@
 
   let state = { view:'closed', started:false, collecting:false, step:0, data:{ leadSource:'Help Bot', transcript:[], submittedAt:'' }, submitted:false, scrollTop:0, flow:[] };
   const root = document.createElement('div');
-  root.className='helpbot';
+  root.id = 'help-bot-launcher';
+  root.className='helpbot help-bot-launcher chatbot-trigger chat-widget-button';
   root.innerHTML = `<button type="button" class="helpbot__launcher" aria-label="Open Shelby Auto Glass Assistant" aria-expanded="false" aria-controls="helpbot-panel">Need Help?</button><section id="helpbot-panel" class="helpbot__panel" role="dialog" aria-modal="false" aria-labelledby="helpbot-title" hidden><header><div class="helpbot__brand" aria-hidden="true"><img src="/assets/logo/Shelby-Auto-Glass-Logo-Dark-Header-Web.png" alt=""></div><h2 id="helpbot-title">Shelby Help Bot</h2><button type="button" data-min aria-label="Minimize chat" title="Minimize chat">–</button><button type="button" data-close aria-label="Close chat" title="Close chat">×</button></header><div class="helpbot__messages" role="log" aria-live="polite"></div><div class="helpbot__quick"></div><form class="helpbot__form"><label for="helpbot-input">Type your message</label><input id="helpbot-input" autocomplete="off"/><button type="submit">Send</button></form><div class="helpbot__status" aria-live="polite" aria-atomic="true"></div></section>`;
   document.body.append(root);
   const panel=root.querySelector('.helpbot__panel'), launcher=root.querySelector('.helpbot__launcher'), messages=root.querySelector('.helpbot__messages'), quick=root.querySelector('.helpbot__quick'), input=root.querySelector('input'), status=root.querySelector('.helpbot__status'), form=root.querySelector('form');
   const saveScroll = () => { state.scrollTop = messages.scrollTop; };
   const enforceDockPosition = () => {
-    root.style.position = 'fixed';
-    root.style.top = 'auto';
-    root.style.left = 'auto';
-    root.style.right = window.matchMedia('(max-width: 760px)').matches ? '16px' : '24px';
-    root.style.bottom = window.matchMedia('(max-width: 760px)').matches ? '20px' : '24px';
-    root.style.transform = 'none';
-    root.style.zIndex = '9999';
+    const offset = window.matchMedia('(max-width: 768px)').matches ? '16px' : '24px';
+    root.style.setProperty('position', 'fixed', 'important');
+    root.style.setProperty('right', offset, 'important');
+    root.style.setProperty('bottom', offset, 'important');
+    root.style.setProperty('top', 'auto', 'important');
+    root.style.setProperty('left', 'auto', 'important');
+    root.style.setProperty('inset', `auto ${offset} ${offset} auto`, 'important');
+    root.style.setProperty('transform', 'none', 'important');
+    root.style.setProperty('margin', '0', 'important');
+    root.style.setProperty('z-index', '99999', 'important');
   };
   const announce = text => { status.textContent = text; };
   const logDev = (...args) => { if (isDevelopment) console.warn(...args); };
