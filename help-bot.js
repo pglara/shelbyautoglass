@@ -44,12 +44,14 @@
   document.body.append(root);
   const panel=root.querySelector('.helpbot__panel'), launcher=root.querySelector('.helpbot__launcher'), messages=root.querySelector('.helpbot__messages'), quick=root.querySelector('.helpbot__quick'), input=root.querySelector('input'), status=root.querySelector('.helpbot__status'), form=root.querySelector('form');
   const saveScroll = () => { state.scrollTop = messages.scrollTop; };
-  const updateDockPosition = () => {
-    const footer = document.querySelector('.footer');
-    const baseOffset = window.matchMedia('(max-width: 760px)').matches ? 18 : 24;
-    const safeArea = parseFloat(getComputedStyle(root).getPropertyValue('--helpbot-safe-area-bottom')) || 0;
-    const viewportOverlap = footer ? Math.max(0, window.innerHeight - footer.getBoundingClientRect().top) : 0;
-    root.style.setProperty('--helpbot-bottom-offset', `${Math.ceil(baseOffset + safeArea + viewportOverlap)}px`);
+  const enforceDockPosition = () => {
+    root.style.position = 'fixed';
+    root.style.top = 'auto';
+    root.style.left = 'auto';
+    root.style.right = window.matchMedia('(max-width: 760px)').matches ? '16px' : '24px';
+    root.style.bottom = window.matchMedia('(max-width: 760px)').matches ? '20px' : '24px';
+    root.style.transform = 'none';
+    root.style.zIndex = '9999';
   };
   const announce = text => { status.textContent = text; };
   const logDev = (...args) => { if (isDevelopment) console.warn(...args); };
@@ -58,9 +60,8 @@
   function addWelcome(){ const article=document.createElement('article'); article.className='helpbot__welcome helpbot__msg helpbot__msg--bot'; article.setAttribute('aria-label','Welcome message from Shelby Auto Glass'); article.innerHTML='<strong>👋 Welcome to Shelby Auto Glass!</strong><span>I\'m here to help you get your glass repaired or replaced as quickly as possible.</span><span>Whether you have a rock chip, cracked windshield, broken side window, or need help with an insurance claim, I can get you started in just a minute.</span><strong>What can I help you with today?</strong>'; messages.append(article); messages.scrollTop=messages.scrollHeight; saveScroll(); state.data.transcript.push(`bot: ${welcomeMessage}`); }
   function buttons(arr){ quick.innerHTML=''; arr.forEach(v=>{ const b=document.createElement('button'); b.type='button'; b.textContent=v; b.setAttribute('aria-label', optionLabels[v] || v); b.addEventListener('click', e=>{ e.preventDefault(); e.stopPropagation(); handle(quickActionMap[v] || v); }); quick.append(b); }); }
   function open(){ if(!state.started){ addWelcome(); buttons(initialOptions); state.started=true;} setView('open'); }
-  updateDockPosition();
-  window.addEventListener('scroll', updateDockPosition, { passive:true });
-  window.addEventListener('resize', updateDockPosition);
+  enforceDockPosition();
+  window.addEventListener('resize', enforceDockPosition);
   launcher.addEventListener('click', e=>{ e.preventDefault(); e.stopPropagation(); open(); });
   root.querySelector('[data-min]').addEventListener('click', e=>{ e.preventDefault(); e.stopPropagation(); setView('minimized'); });
   root.querySelector('[data-close]').addEventListener('click', e=>{ e.preventDefault(); e.stopPropagation(); setView('closed'); });
